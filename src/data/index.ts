@@ -6,3 +6,5 @@ export * from "./hero";
 export * from "./quote";
 export * from "./skills";
 export * from "./about";
+export * from "./social";
+export * from "./contact";
