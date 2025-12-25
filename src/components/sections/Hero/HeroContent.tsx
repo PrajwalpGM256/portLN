@@ -1,6 +1,7 @@
 import { motion, MotionValue } from "framer-motion";
 import { SplitText } from "@/components/animations";
 import { personal, heroData } from "@/data";
+import { theme } from "@/config/theme";
 
 interface HeroContentProps {
   y: MotionValue<number>;
@@ -23,7 +24,7 @@ export function HeroContent({ y, scale, opacity }: HeroContentProps) {
       >
         <motion.div
           className="h-px"
-          style={{ background: "var(--color-primary)" }}
+          style={{ background: theme.navbarBg }}
           initial={{ width: 0 }}
           whileInView={{ width: 48 }}
           viewport={{ once: false }}
@@ -40,7 +41,7 @@ export function HeroContent({ y, scale, opacity }: HeroContentProps) {
         </motion.span>
         <motion.div
           className="h-px"
-          style={{ background: "var(--color-primary)" }}
+          style={{ background: theme.navbarBg }}
           initial={{ width: 0 }}
           whileInView={{ width: 48 }}
           viewport={{ once: false }}
@@ -77,8 +78,8 @@ export function HeroContent({ y, scale, opacity }: HeroContentProps) {
         />
         <defs>
           <linearGradient id="signature-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--color-primary)" />
-            <stop offset="100%" stopColor="var(--color-cyan)" />
+            <stop offset="0%" stopColor={theme.navbarBg} />
+            <stop offset="100%" stopColor={theme.accentBg} />
           </linearGradient>
         </defs>
       </motion.svg>
@@ -94,7 +95,7 @@ export function HeroContent({ y, scale, opacity }: HeroContentProps) {
         <span className="text-lg" style={{ color: "var(--color-dark-400)" }}>
           {personal.degree}
         </span>
-        <span style={{ color: "var(--color-primary)" }}>·</span>
+        <span style={{ color: theme.navbarBg }}>·</span>
         <span className="text-lg font-medium">{personal.university}</span>
       </motion.div>
 
@@ -115,7 +116,7 @@ export function HeroContent({ y, scale, opacity }: HeroContentProps) {
             viewport={{ once: false }}
             transition={{ delay: timing.statsDelay + i * 0.1 }}
           >
-            <div className="text-2xl font-bold" style={{ color: "var(--color-primary)" }}>
+            <div className="text-2xl font-bold" style={{ color: theme.navbarBg }}>
               {stat.value}
             </div>
             <div className="text-xs tracking-widest" style={{ color: "var(--color-dark-500)" }}>

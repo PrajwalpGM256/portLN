@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { projects, projectsSection } from "@/data";
 import { ProjectCard } from "./ProjectCard";
+import { theme } from "@/config/theme";
 
 export function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,12 +51,7 @@ export function Projects() {
       {/* Sticky container that stays in view during scroll */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         {/* Background accent */}
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse at 0% 50%, rgba(34,197,94,0.03) 0%, transparent 50%)",
-          }}
-        />
+        {/* Gradient background removed for cleaner look */}
 
         {/* Section Header - positioned at top */}
         <motion.div 
@@ -200,11 +196,11 @@ export function Projects() {
         {/* Gradient overlays - positioned to cover only the cards area */}
         <div 
           className="absolute left-0 top-[20%] bottom-8 w-8 md:w-16 pointer-events-none z-30"
-          style={{ background: "linear-gradient(90deg, black, transparent)" }}
+          style={{ background: `linear-gradient(90deg, ${theme.black}, transparent)` }}
         />
         <div 
           className="absolute right-0 top-[20%] bottom-8 w-16 md:w-32 pointer-events-none z-30"
-          style={{ background: "linear-gradient(270deg, black, transparent)" }}
+          style={{ background: `linear-gradient(270deg, ${theme.black}, transparent)` }}
         />
       </div>
     </section>

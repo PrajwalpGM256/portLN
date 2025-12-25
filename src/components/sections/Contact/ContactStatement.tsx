@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { contactData } from "@/data";
+import { theme } from "@/config/theme";
 
 export function ContactStatement() {
   const { statement, timing } = contactData;
@@ -19,7 +20,7 @@ export function ContactStatement() {
         <motion.path
           d="M10 40 Q30 10 60 35 Q90 60 120 25 Q150 -5 180 30 Q190 40 195 35"
           fill="none"
-          stroke="#000"
+          stroke={theme.black}
           strokeWidth="2"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -36,7 +37,7 @@ export function ContactStatement() {
             key={line}
             className="block"
             style={{
-              color: line === statement.accent ? "#000" : "rgba(0,0,0,0.7)",
+              color: line === statement.accent ? theme.black : theme.accentDark,
               fontStyle: line === statement.accent ? "italic" : "normal",
             }}
             initial={{ opacity: 0, y: 30 }}
@@ -54,7 +55,7 @@ export function ContactStatement() {
         {/* Period */}
         <motion.span
           className="inline-block"
-          style={{ color: "#000" }}
+          style={{ color: theme.black }}
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

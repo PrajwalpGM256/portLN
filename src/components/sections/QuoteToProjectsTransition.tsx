@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { SparklesCore } from "@/components/ui/Sparkles";
+import { theme } from "@/config/theme";
 
 export function QuoteToProjectsTransition() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,7 @@ export function QuoteToProjectsTransition() {
           minSize={0.6}
           maxSize={1.4}
           particleDensity={60}
-          particleColor="#22c55e"
+          particleColor={theme.navbarBg}
           speed={0.8}
         />
       </div>
@@ -41,7 +42,7 @@ export function QuoteToProjectsTransition() {
           minSize={0.4}
           maxSize={1}
           particleDensity={20}
-          particleColor="#06b6d4"
+          particleColor={theme.accentBg}
           speed={0.6}
         />
       </div>
@@ -50,7 +51,7 @@ export function QuoteToProjectsTransition() {
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 50%, transparent 30%, black 80%)",
+          background: `radial-gradient(ellipse at 50% 50%, transparent 30%, ${theme.black} 80%)`,
         }}
       />
 

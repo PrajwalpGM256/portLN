@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { experience, journeySection, type Experience } from "@/data";
+import { theme } from "@/config/theme";
 
 export function Journey() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,11 +67,11 @@ export function Journey() {
       id="journey" 
       className="relative overflow-hidden pt-24 md:pt-32 pb-16 md:pb-24 z-20"
       style={{ 
-        backgroundColor: "#000000",
+        backgroundColor: theme.black,
         marginTop: "-100px",
         borderTopLeftRadius: "2rem",
         borderTopRightRadius: "2rem",
-        boxShadow: "0 -10px 40px rgba(0,0,0,0.5)"
+        boxShadow: `0 -10px 40px ${theme.accent}`
       }}
     >
       {/* Background with dynamic gradient based on active card */}

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { contactData } from "@/data";
+import { theme } from "@/config/theme";
 
 export function ContactNav() {
   const { labels, navLinks } = contactData;
@@ -8,7 +9,7 @@ export function ContactNav() {
     <div>
       <p
         className="text-[10px] tracking-[0.3em] mb-4 font-medium"
-        style={{ color: "rgba(0,0,0,0.5)" }}
+        style={{ color: theme.accent }}
       >
         {labels.navigation}
       </p>
@@ -19,7 +20,7 @@ export function ContactNav() {
             key={link.id}
             href={link.href}
             className="block text-base md:text-lg font-bold transition-colors duration-300"
-            style={{ color: link.accent ? "var(--color-primary)" : "#000" }}
+            style={{ color: link.accent ? "var(--color-primary)" : theme.black }}
             whileHover={{ x: 4 }}
           >
             {link.name}

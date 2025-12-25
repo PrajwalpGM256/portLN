@@ -12,6 +12,7 @@ import {
 
 import { PhotoCard } from "./PhotoCard";
 import { SocialLinkItem } from "./SocialLinkItem";
+import { theme } from "@/config/theme";
 
 export function Social() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -22,14 +23,14 @@ export function Social() {
       ref={sectionRef}
       id="socials"
       className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
-      style={{ backgroundColor: "#000000" }}
+      style={{ backgroundColor: theme.black }}
       aria-labelledby="socials-heading"
     >
       {/* Background accent */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 30%, rgba(255,128,0,0.05) 0%, transparent 60%)",
+          background: `radial-gradient(ellipse at 50% 30%, ${theme.accentLight} 0%, transparent 60%)`,
         }}
         aria-hidden
       />

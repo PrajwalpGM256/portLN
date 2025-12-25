@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { contactData } from "@/data";
+import { theme } from "@/config/theme";
 
 export function ContactCTA() {
   const { cta } = contactData;
@@ -10,9 +11,9 @@ export function ContactCTA() {
       href={`mailto:${cta.email}`}
       className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full overflow-hidden"
       style={{
-        border: "2px solid #000",
-        backgroundColor: "#000",
-        color: "#CCFF00",
+        border: `2px solid ${theme.border}`,
+        backgroundColor: theme.black,
+        color: theme.lime,
       }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
