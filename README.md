@@ -1,6 +1,5 @@
-# portLN
 
-My personal portfolio site. Heavily inspired by [Lando Norris's website](https://landonorris.com) — clean, dark, and scroll-driven.
+# My personal portfolio site. Inspired by Off+brand.
 
 ## Stack
 
