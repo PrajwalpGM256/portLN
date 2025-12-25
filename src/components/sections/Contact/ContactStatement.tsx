@@ -60,7 +60,7 @@ export function ContactStatement() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: timing.statementDelay + 0.3 }}
         >
-          .
+          
         </motion.span>
       </h2>
     </div>
