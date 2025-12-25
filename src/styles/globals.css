@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ============================================
+   CSS VARIABLES - Design Tokens
+   ============================================ */
+:root {
+  /* Primary - Lando's Lime */
+  --color-primary: #22c55e;
+  --color-primary-light: #4ade80;
+  --color-primary-dark: #16a34a;
+  
+  /* Neutrals */
+  --color-black: #000000;
+  --color-dark-900: #0a0a0a;
+  --color-dark-800: #171717;
+  --color-dark-700: #262626;
+  --color-dark-600: #404040;
+  --color-dark-500: #525252;
+  --color-dark-400: #737373;
+  --color-dark-300: #a3a3a3;
+  
+  /* Accents */
+  --color-cyan: #06b6d4;
+  --color-orange: #f97316;
+  --color-purple: #8b5cf6;
+  
+  /* Spacing - Site-wide padding */
+  --padding-x-mobile: 1.5rem;    /* 24px */
+  --padding-x-tablet: 3rem;      /* 48px */
+  --padding-x-desktop: 5rem;     /* 80px */
+  --padding-x-wide: 8rem;        /* 128px */
+  
+  /* Section spacing */
+  --section-padding-y: clamp(6rem, 15vh, 12rem);
+  
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-black);
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(34, 197, 94, 0.3);
+  color: #ffffff;
+}
+
+/* ============================================
+   LAYOUT - Global Container
+   ============================================ */
+.site-container {
+  width: 100%;
+  padding-left: var(--padding-x-mobile);
+  padding-right: var(--padding-x-mobile);
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: var(--padding-x-tablet);
+    padding-right: var(--padding-x-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-left: var(--padding-x-desktop);
+    padding-right: var(--padding-x-desktop);
+  }
+}
+
+@media (min-width: 1440px) {
+  .site-container {
+    padding-left: var(--padding-x-wide);
+    padding-right: var(--padding-x-wide);
+  }
+}
+
+/* Section vertical spacing */
+.site-section {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.text-display {
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.text-heading {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.text-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
