@@ -9,18 +9,24 @@ export function useLenis() {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Initialize Lenis with optimized settings
+        // Initialize Lenis with optimized settings for paced scrolling
         const lenis = new Lenis({
-            duration: 1.2, // Scroll animation duration
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
+            duration: 1.8, // Slower scroll animation for paced feel
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
+            wheelMultiplier: 0.5, // 50% sensitivity - much slower scrolling
+            touchMultiplier: 1.2,
         });
 
         lenisRef.current = lenis;
+
+        // Stop scrolling initially for 3 seconds
+        lenis.stop();
+        const unlockTimer = setTimeout(() => {
+            lenis.start();
+        }, 3000);
 
         // RAF loop
         function raf(time: number) {
@@ -32,6 +38,7 @@ export function useLenis() {
 
         // Cleanup
         return () => {
+            clearTimeout(unlockTimer);
             lenis.destroy();
             lenisRef.current = null;
         };
