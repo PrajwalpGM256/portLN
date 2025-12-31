@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { Navbar } from "@/components/layout";
 import { Hero, Quote, Projects, TechStack, Journey, Social, Contact } from "@/components/sections";
+import { useLenis } from "@/hooks";
 
 export default function App() {
+  // Initialize Lenis smooth scrolling
+  useLenis();
+
   // Disable scrolling for 3 seconds on initial load to let animations play
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;

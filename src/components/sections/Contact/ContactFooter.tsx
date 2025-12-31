@@ -1,5 +1,4 @@
 import { contactData } from "@/data";
-import { theme } from "@/config/theme";
 
 export function ContactFooter() {
   const { footer } = contactData;
