@@ -12,13 +12,15 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+import { theme } from "@/config/theme";
+
 export const skillCategories: SkillCategory[] = [
   {
     id: "fullstack",
     title: "Full Stack",
     description: "End-to-end application development with modern frameworks",
     icon: "code",
-    color: "#22c55e",
+    color: theme.navbarBg,
     skills: [
       { name: "React / Next.js", level: 95 },
       { name: "TypeScript", level: 90 },
@@ -31,7 +33,7 @@ export const skillCategories: SkillCategory[] = [
     title: "Machine Learning",
     description: "Building intelligent systems that learn and adapt",
     icon: "brain",
-    color: "#8b5cf6",
+    color: "var(--color-purple)",
     skills: [
       { name: "PyTorch", level: 90 },
       { name: "TensorFlow", level: 85 },
@@ -44,7 +46,7 @@ export const skillCategories: SkillCategory[] = [
     title: "Data Engineering",
     description: "Designing scalable data pipelines and analytics",
     icon: "database",
-    color: "#06b6d4",
+    color: "var(--color-cyan)",
     skills: [
       { name: "Python / Pandas", level: 95 },
       { name: "SQL / PostgreSQL", level: 90 },
@@ -57,7 +59,7 @@ export const skillCategories: SkillCategory[] = [
     title: "Cloud & DevOps",
     description: "Deploying and scaling applications in the cloud",
     icon: "cloud",
-    color: "#f97316",
+    color: "var(--color-orange)",
     skills: [
       { name: "AWS / GCP", level: 80 },
       { name: "Docker", level: 85 },

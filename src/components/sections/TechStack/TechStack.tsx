@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView, useScroll } from "framer-motion";
 import { techStack, techStackSection } from "@/data";
 import { TechCard } from "./TechCard";
+import { theme } from "@/config/theme";
 
 // Grid column count for different breakpoints (used for columnIndex calculation)
 const COLUMNS = { sm: 2, md: 2, lg: 3, xl: 4 };
@@ -29,15 +30,10 @@ export function TechStack() {
       ref={sectionRef}
       id="tech"
       className="site-section relative overflow-visible"
-      style={{ backgroundColor: "#000000" }}
+      style={{ backgroundColor: theme.black }}
     >
       {/* Background gradient accent */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 80% 20%, rgba(34,197,94,0.04) 0%, transparent 50%)",
-        }}
-      />
+      {/* Gradient background removed for cleaner look */}
 
       {/* Header */}
       <div ref={headerRef} className="site-container mb-16 md:mb-24 lg:mb-32">

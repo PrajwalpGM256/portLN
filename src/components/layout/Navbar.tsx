@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { personal } from "@/data";
+import { theme } from "@/config/theme";
 
 
 
@@ -14,8 +15,8 @@ export function Navbar() {
       <motion.nav
         className="fixed top-0 w-full z-50 shadow-lg"
         style={{
-          backgroundColor: "rgba(182, 233, 0, 0.85)", // Softer green with opacity
-          borderBottom: "4px solid #000",
+          backgroundColor: theme.navbarBg,
+          borderBottom: `4px solid ${theme.black}`,
           backdropFilter: "blur(6px)",
         }}
         initial={{ y: -100 }}
@@ -24,9 +25,9 @@ export function Navbar() {
       >
         <div className="site-container py-1 flex justify-between items-center">
           {/* Logo */}
-          <a href="#" className="text-2xl font-black tracking-tighter flex items-center gap-1" style={{ color: "#000" }}>
+          <a href="#" className="text-2xl font-black tracking-tighter flex items-center gap-1" style={{ color: theme.black }}>
             {personal.name.slice(0, 4).toUpperCase()}
-            <span style={{ color: "#000", fontWeight: 900, fontSize: 28, marginLeft: 2 }}>.</span>
+            <span style={{ color: theme.black, fontWeight: 900, fontSize: 28, marginLeft: 2 }}>.</span>
           </a>
 
           {/* Desktop Nav: Only Contact Me Button */}
@@ -39,7 +40,7 @@ export function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-0.5 transition-colors"
-            style={{ color: isOpen ? "#000" : "#000" }}
+            style={{ color: theme.black }}
             aria-label="Open menu"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -52,7 +53,7 @@ export function Navbar() {
         {isOpen && (
           <motion.div
             className="fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center gap-10"
-            style={{ backgroundColor: "#B6E900" }}
+            style={{ backgroundColor: theme.navbarBg }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

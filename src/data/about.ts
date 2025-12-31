@@ -1,7 +1,7 @@
 export interface Company {
   id: string;
   name: string;
-  logo?: string; // URL or could use text
+  logo?: string;
   role: string;
   period: string;
   current: boolean;
@@ -55,23 +55,21 @@ export const aboutSection = {
   titleLine1: "Experience",
   titleLine2: "&Journey",
   description: "From Electronics & Communication engineering to mastering full-stack development and machine learning. A relentless pursuit of building systems that matter.",
-  
   storyTitle: "The Path",
   storyParagraphs: [
     "Started coding in 2019, fell in love with the craft. What began as curiosity became obsession — understanding systems, optimizing performance, creating experiences.",
     "Now pursuing MS in Computer Science at Northeastern while building production systems at Northcross Group. Every line of code is intentional.",
   ],
-  
+
   currentFocus: [
     "Machine Learning & AI",
     "Full Stack Development", 
     "Data Engineering",
     "System Design",
   ],
-  
+
   ctaText: "Let's Connect",
   ctaLink: "#contact",
-  
   timing: {
     headerDelay: 0.2,
     statsDelay: 0.3,

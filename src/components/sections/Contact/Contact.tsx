@@ -3,6 +3,7 @@ import { ContactNav } from "./ContactNav";
 import { ContactSocials } from "./ContactSocials";
 import { ContactCTA } from "./ContactCTA";
 import { ContactMarquee } from "./ContactMarquee";
+import { theme } from "@/config/theme";
 
 export function Contact() {
   return (
@@ -11,7 +12,7 @@ export function Contact() {
       className="relative overflow-hidden flex flex-col"
       style={{
         minHeight: "100vh",
-        backgroundColor: "#CCFF00",
+        backgroundColor: theme.contactBg,
       }}
     >
       {/* Wavy border at top */}
@@ -49,7 +50,7 @@ export function Contact() {
         <ContactMarquee />
         
         {/* Simple footer - just copyright */}
-        <div className="mt-6 flex justify-between items-center text-[11px]" style={{ color: "rgba(0,0,0,0.5)" }}>
+        <div className="mt-6 flex justify-between items-center text-[11px]" style={{ color: theme.accent }}>
           <p>© {new Date().getFullYear()} Prajwal. All rights reserved</p>
           <div className="flex gap-6">
             <a href="#" className="uppercase tracking-[0.2em] hover:text-black transition-colors">Privacy Policy</a>

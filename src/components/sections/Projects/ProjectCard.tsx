@@ -10,10 +10,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 30 });
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 30 });
 
@@ -35,24 +35,24 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.div
       ref={cardRef}
       className="relative flex-shrink-0 cursor-pointer group"
-      style={{ 
+      style={{
         width: "min(420px, 85vw)",
         perspective: "1000px",
       }}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-100px" }}
-      transition={{ 
-        duration: 1, 
+      transition={{
+        duration: 1,
         delay: index * 0.15,
-        ease: [0.16, 1, 0.3, 1] 
+        ease: [0.16, 1, 0.3, 1]
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
         className="relative rounded-3xl overflow-hidden"
-        style={{ 
+        style={{
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
@@ -78,13 +78,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Top accent bar with glow */}
         <div className="absolute top-0 left-0 right-0">
-          <div 
+          <div
             className="h-1 w-full"
             style={{ backgroundColor: project.color }}
           />
-          <div 
+          <div
             className="h-16 w-full"
-            style={{ 
+            style={{
               background: `linear-gradient(to bottom, ${project.color}20, transparent)`,
             }}
           />
@@ -92,12 +92,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* ====== CARD CONTENT WITH EQUAL PADDING ====== */}
         <div className="p-5 md:p-6 lg:p-8">
-          
+
           {/* Top area - Index number */}
           <div className="relative h-28 md:h-36 mb-4">
-            <motion.div 
+            <motion.div
               className="absolute top-0 right-0 text-[90px] md:text-[110px] font-black leading-none select-none"
-              style={{ 
+              style={{
                 color: project.color,
                 opacity: 0.15,
               }}
@@ -116,9 +116,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
           >
-            <span 
+            <span
               className="inline-flex items-center gap-3 text-xs font-semibold tracking-widest px-4 py-2 rounded-full"
-              style={{ 
+              style={{
                 backgroundColor: `${project.color}18`,
                 color: project.color,
               }}
@@ -130,7 +130,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </motion.div>
 
           {/* Title */}
-          <motion.h3 
+          <motion.h3
             className="text-2xl md:text-3xl font-bold mb-4 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -140,7 +140,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </motion.h3>
 
           {/* Description */}
-          <motion.p 
+          <motion.p
             className="text-sm md:text-base leading-relaxed mb-6"
             style={{ color: "var(--color-dark-400)" }}
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </motion.p>
 
           {/* Tech stack */}
-          <motion.div 
+          <motion.div
             className="flex flex-wrap gap-2 mb-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -161,7 +161,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <span
                 key={tech}
                 className="text-xs px-3 py-1.5 rounded-full font-medium"
-                style={{ 
+                style={{
                   backgroundColor: "rgba(255,255,255,0.06)",
                   color: "var(--color-dark-300)",
                   border: "1px solid rgba(255,255,255,0.1)",
@@ -173,14 +173,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </motion.div>
 
           {/* Action links */}
-          <motion.div 
-            className="flex items-center gap-6 pt-2"
+          <motion.div
+            className="relative z-50 flex items-center gap-6 pt-2"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 + 0.6 }}
+            onClick={(e) => e.stopPropagation()}
           >
             {project.github && (
-              <motion.a 
+              <motion.a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -193,7 +194,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </motion.a>
             )}
             {project.live && (
-              <motion.a 
+              <motion.a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"

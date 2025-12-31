@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { contactData } from "@/data";
+import { theme } from "@/config/theme";
 
 export function ContactMarquee() {
   const { techBadges, labels } = contactData;
   const duplicatedBadges = [...techBadges, ...techBadges];
 
   return (
-    <div className="border-t border-b py-4" style={{ borderColor: "rgba(0,0,0,0.2)" }}>
+    <div className="border-t border-b py-4" style={{ borderColor: theme.accentLight }}>
       {/* Label */}
       <p
         className="text-[10px] tracking-[0.3em] text-center mb-3 font-medium"
-        style={{ color: "rgba(0,0,0,0.5)" }}
+        style={{ color: theme.accent }}
       >
         {labels.built}
       </p>
@@ -26,11 +27,11 @@ export function ContactMarquee() {
             <span
               key={`${badge.id}-${i}`}
               className="text-sm md:text-base font-semibold tracking-wide flex items-center gap-2"
-              style={{ color: "rgba(0,0,0,0.7)" }}
+              style={{ color: theme.accentDark }}
             >
               <span
                 className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: "#000", opacity: 0.4 }}
+                style={{ backgroundColor: theme.black, opacity: 0.4 }}
               />
               {badge.name}
             </span>

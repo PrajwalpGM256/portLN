@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { contactData } from "@/data";
+import { theme } from "@/config/theme";
 
 export function ContactSocials() {
   const { labels, socials } = contactData;
@@ -8,7 +9,7 @@ export function ContactSocials() {
     <div className="text-right">
       <p
         className="text-[10px] tracking-[0.3em] mb-4 font-medium"
-        style={{ color: "rgba(0,0,0,0.5)" }}
+        style={{ color: theme.accent }}
       >
         {labels.connect}
       </p>
@@ -21,7 +22,7 @@ export function ContactSocials() {
             target="_blank"
             rel="noopener noreferrer"
             className="block text-base md:text-lg font-bold transition-all duration-300"
-            style={{ color: "#000" }}
+            style={{ color: theme.black }}
             whileHover={{ x: -4 }}
           >
             {social.name}

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { theme } from "@/config/theme";
 
 export function ContactVisual() {
   return (
@@ -14,10 +15,10 @@ export function ContactVisual() {
         className="relative w-full h-full rounded-2xl overflow-hidden"
         style={{
           background: `
-            radial-gradient(ellipse at 50% 30%, rgba(34, 197, 94, 0.3) 0%, transparent 60%),
+            radial-gradient(ellipse at 50% 30%, ${theme.accentBg} 0%, transparent 60%),
             linear-gradient(180deg, var(--color-dark-900) 0%, var(--color-black) 100%)
           `,
-          border: "1px solid var(--color-dark-700)",
+          border: `1px solid var(--color-dark-700)`,
         }}
       >
         {/* Grid overlay */}

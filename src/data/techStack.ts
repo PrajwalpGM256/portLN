@@ -11,6 +11,8 @@ export interface TechItem {
   highlights: string[]; // Key achievements/uses
 }
 
+import { theme } from "@/config/theme";
+
 export const techStack: TechItem[] = [
   {
     id: "react",
@@ -105,7 +107,7 @@ export const techStack: TechItem[] = [
     name: "Next.js",
     year: "2022",
     category: "Framework",
-    color: "#ffffff",
+    color: theme.white,
     icon: "layers",
     experience: "3+ years",
     proficiency: 88,
