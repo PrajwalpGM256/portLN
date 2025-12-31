@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { projects, projectsSection } from "@/data";
 import { ProjectCard } from "./ProjectCard";
 import { theme } from "@/config/theme";
@@ -11,13 +10,15 @@ export function Projects() {
   const horizontalRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: false, margin: "-100px" });
 
-  const featuredProjects = projects.filter((p) => p.featured);
+  // Show all projects instead of just featured
+  const allProjects = projects;
 
   // Calculate total scroll width needed
   const cardWidth = 420; // approximate card width
   const cardGap = 48; // gap between cards
-  const totalCards = featuredProjects.length + 1; // +1 for view all card
-  const totalScrollWidth = totalCards * (cardWidth + cardGap);
+  const totalCards = allProjects.length;
+  const endPadding = 200; // Extra padding to ensure last card is fully visible
+  const totalScrollWidth = totalCards * (cardWidth + cardGap) + endPadding;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -27,7 +28,7 @@ export function Projects() {
   // Transform vertical scroll to horizontal movement - smoother, starts later
   const x = useTransform(
     scrollYProgress,
-    [0.2, 0.9], // Start horizontal scroll after 20%, end at 90% for smoother feel
+    [0.15, 0.95], // Start horizontal scroll after 15%, end at 95% for smoother feel
     ["3%", `-${totalScrollWidth - (typeof window !== 'undefined' ? window.innerWidth : 1200)}px`]
   );
 
@@ -141,56 +142,9 @@ export function Projects() {
             }
           `}</style>
 
-          {featuredProjects.map((project, index) => (
+          {allProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-
-          {/* View All card */}
-          <motion.a
-            href="#"
-            className="relative flex-shrink-0 flex items-center justify-center cursor-pointer group"
-            style={{
-              width: "min(280px, 70vw)",
-            }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <motion.div
-              className="w-full h-full min-h-[450px] rounded-3xl flex flex-col items-center justify-center gap-8"
-              style={{
-                border: "1px dashed var(--color-dark-700)",
-              }}
-              whileHover={{
-                borderColor: "var(--color-primary)",
-                backgroundColor: "rgba(34,197,94,0.03)",
-              }}
-              transition={{ duration: 0.4 }}
-            >
-              <motion.div
-                className="w-20 h-20 rounded-full flex items-center justify-center"
-                style={{
-                  border: "1px solid var(--color-dark-700)",
-                }}
-                whileHover={{
-                  borderColor: "var(--color-primary)",
-                  scale: 1.1,
-                }}
-              >
-                <ArrowRight
-                  size={28}
-                  style={{ color: "var(--color-primary)" }}
-                />
-              </motion.div>
-              <span
-                className="text-sm tracking-widest"
-                style={{ color: "var(--color-dark-500)" }}
-              >
-                VIEW ALL PROJECTS
-              </span>
-            </motion.div>
-          </motion.a>
         </motion.div>
 
         {/* Gradient overlays - subtle fade effect */}
