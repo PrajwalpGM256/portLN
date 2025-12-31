@@ -10,9 +10,9 @@ export function Projects() {
   const headerRef = useRef<HTMLDivElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: false, margin: "-100px" });
-  
+
   const featuredProjects = projects.filter((p) => p.featured);
-  
+
   // Calculate total scroll width needed
   const cardWidth = 420; // approximate card width
   const cardGap = 48; // gap between cards
@@ -24,26 +24,26 @@ export function Projects() {
     offset: ["start start", "end end"],
   });
 
-  // Transform vertical scroll to horizontal movement - starts after header is visible
+  // Transform vertical scroll to horizontal movement - smoother, starts later
   const x = useTransform(
-    scrollYProgress, 
-    [0.15, 0.95], // Start horizontal scroll after 15%, end at 95% (slower, less sensitive)
-    ["0%", `-${totalScrollWidth - (typeof window !== 'undefined' ? window.innerWidth : 1200)}px`]
+    scrollYProgress,
+    [0.2, 0.9], // Start horizontal scroll after 20%, end at 90% for smoother feel
+    ["3%", `-${totalScrollWidth - (typeof window !== 'undefined' ? window.innerWidth : 1200)}px`]
   );
 
-  // Header appears with more scroll range (less sensitive)
-  const headerY = useTransform(scrollYProgress, [0, 0.08], [60, 0]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  
-  // Cards fade in after header with more scroll range
-  const cardsOpacity = useTransform(scrollYProgress, [0.08, 0.18], [0, 1]);
+  // Header appears immediately when section is in view
+  const headerY = useTransform(scrollYProgress, [0, 0.05], [30, 0]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.03], [0.2, 1]);
+
+  // Cards fade in slightly after header
+  const cardsOpacity = useTransform(scrollYProgress, [0.02, 0.08], [0.2, 1]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="work" 
+      id="work"
       className="relative"
-      style={{ 
+      style={{
         // Height determines how long we "scroll" through this section
         height: `${totalScrollWidth}px`,
       }}
@@ -54,7 +54,7 @@ export function Projects() {
         {/* Gradient background removed for cleaner look */}
 
         {/* Section Header - positioned at top */}
-        <motion.div 
+        <motion.div
           ref={headerRef}
           className="site-container pt-16 md:pt-20 pb-6 md:pb-8 relative z-20"
           style={{ y: headerY, opacity: headerOpacity }}
@@ -66,21 +66,21 @@ export function Projects() {
             animate={isHeaderInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span 
+            <span
               className="w-12 h-px"
               style={{ backgroundColor: "var(--color-primary)" }}
             />
             <span className="text-label">{projectsSection.label}</span>
           </motion.div>
-          
+
           {/* Title row with scroll indicator */}
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12">
             <motion.h2
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none"
               initial={{ opacity: 0, y: 60 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ 
-                duration: 1, 
+              transition={{
+                duration: 1,
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1]
               }}
@@ -89,7 +89,7 @@ export function Projects() {
             </motion.h2>
 
             {/* Scroll progress indicator */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-4 lg:mb-4"
               initial={{ opacity: 0 }}
               animate={isHeaderInView ? { opacity: 1 } : {}}
@@ -99,9 +99,9 @@ export function Projects() {
                 SCROLL
               </span>
               <div className="w-24 h-0.5 rounded-full overflow-hidden" style={{ backgroundColor: "var(--color-dark-800)" }}>
-                <motion.div 
+                <motion.div
                   className="h-full rounded-full"
-                  style={{ 
+                  style={{
                     backgroundColor: "var(--color-primary)",
                     scaleX: scrollYProgress,
                     transformOrigin: "left",
@@ -113,13 +113,13 @@ export function Projects() {
         </motion.div>
 
         {/* Horizontal scroll gallery - positioned below header */}
-        <motion.div 
+        <motion.div
           ref={horizontalRef}
           className="flex-1 flex items-start gap-8 md:gap-10 lg:gap-12 relative z-10 pb-8 md:pb-12"
-          style={{ 
+          style={{
             x,
             opacity: cardsOpacity,
-            paddingLeft: "var(--padding-x-mobile)",
+            paddingLeft: "clamp(48px, 8vw, 140px)", // More breathing room for first card
             paddingRight: "100vw", // Extra space at the end
           }}
         >
@@ -140,16 +140,16 @@ export function Projects() {
               }
             }
           `}</style>
-          
+
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-          
+
           {/* View All card */}
           <motion.a
             href="#"
             className="relative flex-shrink-0 flex items-center justify-center cursor-pointer group"
-            style={{ 
+            style={{
               width: "min(280px, 70vw)",
             }}
             initial={{ opacity: 0 }}
@@ -159,10 +159,10 @@ export function Projects() {
           >
             <motion.div
               className="w-full h-full min-h-[450px] rounded-3xl flex flex-col items-center justify-center gap-8"
-              style={{ 
+              style={{
                 border: "1px dashed var(--color-dark-700)",
               }}
-              whileHover={{ 
+              whileHover={{
                 borderColor: "var(--color-primary)",
                 backgroundColor: "rgba(34,197,94,0.03)",
               }}
@@ -170,20 +170,20 @@ export function Projects() {
             >
               <motion.div
                 className="w-20 h-20 rounded-full flex items-center justify-center"
-                style={{ 
+                style={{
                   border: "1px solid var(--color-dark-700)",
                 }}
-                whileHover={{ 
+                whileHover={{
                   borderColor: "var(--color-primary)",
                   scale: 1.1,
                 }}
               >
-                <ArrowRight 
-                  size={28} 
-                  style={{ color: "var(--color-primary)" }} 
+                <ArrowRight
+                  size={28}
+                  style={{ color: "var(--color-primary)" }}
                 />
               </motion.div>
-              <span 
+              <span
                 className="text-sm tracking-widest"
                 style={{ color: "var(--color-dark-500)" }}
               >
@@ -193,14 +193,18 @@ export function Projects() {
           </motion.a>
         </motion.div>
 
-        {/* Gradient overlays - positioned to cover only the cards area */}
-        <div 
-          className="absolute left-0 top-[20%] bottom-8 w-8 md:w-16 pointer-events-none z-30"
-          style={{ background: `linear-gradient(90deg, ${theme.black}, transparent)` }}
+        {/* Gradient overlays - subtle fade effect */}
+        <div
+          className="absolute left-0 top-[20%] bottom-8 w-12 md:w-20 lg:w-24 pointer-events-none z-30"
+          style={{
+            background: `linear-gradient(90deg, ${theme.black} 0%, ${theme.black}80 40%, transparent 100%)`
+          }}
         />
-        <div 
-          className="absolute right-0 top-[20%] bottom-8 w-16 md:w-32 pointer-events-none z-30"
-          style={{ background: `linear-gradient(270deg, ${theme.black}, transparent)` }}
+        <div
+          className="absolute right-0 top-[20%] bottom-8 w-12 md:w-20 lg:w-24 pointer-events-none z-30"
+          style={{
+            background: `linear-gradient(270deg, ${theme.black} 0%, ${theme.black}80 40%, transparent 100%)`
+          }}
         />
       </div>
     </section>
