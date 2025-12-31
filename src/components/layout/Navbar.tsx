@@ -30,7 +30,7 @@ export function Navbar() {
             <span style={{ color: theme.black, fontWeight: 900, fontSize: 28, marginLeft: 2 }}>.</span>
           </a>
 
-          {/* Desktop Nav: Only Let's Connect Button */}
+          {/* Desktop Nav: Only Contact Me Button */}
           <div className="hidden md:flex items-center w-full">
             <div className="flex-1" />
             <SlotContactButton />
@@ -59,16 +59,16 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Only Let's Connect button in mobile menu */}
+            {/* Only Contact Me button in mobile menu */}
             <SlotContactButtonMobile setIsOpen={setIsOpen} />
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-// Slot-machine style Let's Connect button (desktop)
+// Slot-machine style Contact Me button (desktop)
 function SlotContactButton() {
-  const text = "Let's Connect!";
+  const text = "Contact Me";
   const [settled, setSettled] = useState(Array(text.length).fill(false));
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
@@ -108,12 +108,12 @@ function SlotContactButton() {
   );
 }
 
-// Slot-machine style Let's Connect button (mobile)
+// Slot-machine style Contact Me button (mobile)
 interface SlotContactButtonMobileProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 function SlotContactButtonMobile({ setIsOpen }: SlotContactButtonMobileProps) {
-  const text = "Let's Connect!";
+  const text = "Contact Me";
   const [settled, setSettled] = useState(Array(text.length).fill(false));
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
