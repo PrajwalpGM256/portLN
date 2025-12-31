@@ -1,26 +1,23 @@
 export const heroData = {
-  // Corner labels
   availabilityStatus: "Available for Work",
-  portfolioYear: "Portfolio 2025",
+  portfolioYear: "Portfolio",
   scrollText: "Scroll to Explore",
   
-  // Stats displayed in hero
   stats: [
-    { value: "4.0", label: "GPA" },
+    { value: "3.86", label: "GPA" },
     { value: "5+", label: "YEARS" },
   ],
   
-  // Particles config
+
   particles: {
-    count: 30,
-    color: "34, 197, 94", // RGB for primary green
+    count: 100,
+    color: "34, 197, 94",
     minSize: 1,
-    maxSize: 5,
+    maxSize: 10,
     minDuration: 10,
     maxDuration: 30,
   },
   
-  // Animation timing (seconds)
   timing: {
     labelDelay: 0.3,
     nameDelay: 0.5,
