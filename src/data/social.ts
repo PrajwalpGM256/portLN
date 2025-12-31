@@ -4,11 +4,11 @@ export const socialsSection = {
   headingLine2: "EVERYWHERE",
   subtext: "Follow me on social media",
   cardImages: [
-    "/src/assets/images/photo-1.jpg",
-    "/src/assets/images/photo-2.jpg",
-    "/src/assets/images/photo-3.jpg",
-    "/src/assets/images/photo-4.jpg",
-    "/src/assets/images/photo-5.jpg",
+    "/5thImage.jpeg",
+    "/2ndImage.jpeg",
+    "/3rdimaeg.jpeg",
+    "/4thimage.jpeg",
+    "/Gemini_Generated_Image_8eqg5w8eqg5w8eqg.png",
   ],
 } as const;
 
