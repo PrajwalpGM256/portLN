@@ -18,14 +18,14 @@ interface PhotoCardProps {
 export function PhotoCard({ imageSrc, position, index, isInView }: PhotoCardProps) {
   return (
     <motion.figure
-      className="absolute w-[140px] h-[190px] md:w-[180px] md:h-[250px] lg:w-[220px] lg:h-[300px] rounded-xl md:rounded-2xl overflow-hidden cursor-pointer"
+      className="absolute w-[160px] h-[220px] md:w-[200px] md:h-[280px] lg:w-[240px] lg:h-[340px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer"
       style={{
         background: "linear-gradient(135deg, var(--color-dark-800) 0%, var(--color-dark-900) 100%)",
         zIndex: position.z,
         left: "50%",
         top: "50%",
-        marginLeft: "-70px",
-        marginTop: "-95px",
+        marginLeft: "-80px",
+        marginTop: "-110px",
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
         border: "1px solid var(--color-dark-700)",
       }}
