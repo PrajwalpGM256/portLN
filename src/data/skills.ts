@@ -1,6 +1,5 @@
 export interface Skill {
   name: string;
-  level: number; // 0-100 for visual bar
 }
 
 export interface SkillCategory {
@@ -22,10 +21,14 @@ export const skillCategories: SkillCategory[] = [
     icon: "code",
     color: theme.navbarBg,
     skills: [
-      { name: "React / Next.js", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Node.js", level: 85 },
-      { name: "Flask / FastAPI", level: 80 },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Node.js" },
+      { name: "Flask" },
+      { name: "FastAPI" },
+      { name: "Express" },
+      { name: "REST APIs" },
     ],
   },
   {
@@ -35,10 +38,14 @@ export const skillCategories: SkillCategory[] = [
     icon: "brain",
     color: "var(--color-purple)",
     skills: [
-      { name: "PyTorch", level: 90 },
-      { name: "TensorFlow", level: 85 },
-      { name: "Scikit-learn", level: 90 },
-      { name: "NLP / Transformers", level: 80 },
+      { name: "PyTorch" },
+      { name: "TensorFlow" },
+      { name: "Scikit-learn" },
+      { name: "NLP" },
+      { name: "Transformers" },
+      { name: "Deep Learning" },
+      { name: "Computer Vision" },
+      { name: "Keras" },
     ],
   },
   {
@@ -48,10 +55,14 @@ export const skillCategories: SkillCategory[] = [
     icon: "database",
     color: "var(--color-cyan)",
     skills: [
-      { name: "Python / Pandas", level: 95 },
-      { name: "SQL / PostgreSQL", level: 90 },
-      { name: "ETL / DuckDB", level: 85 },
-      { name: "Data Visualization", level: 85 },
+      { name: "Python" },
+      { name: "Pandas" },
+      { name: "SQL" },
+      { name: "PostgreSQL" },
+      { name: "MongoDB" },
+      { name: "DuckDB" },
+      { name: "ETL" },
+      { name: "Data Visualization" },
     ],
   },
   {
@@ -61,10 +72,14 @@ export const skillCategories: SkillCategory[] = [
     icon: "cloud",
     color: "var(--color-orange)",
     skills: [
-      { name: "AWS / GCP", level: 80 },
-      { name: "Docker", level: 85 },
-      { name: "CI/CD", level: 80 },
-      { name: "Git / GitHub", level: 95 },
+      { name: "AWS" },
+      { name: "GCP" },
+      { name: "Docker" },
+      { name: "Kubernetes" },
+      { name: "CI/CD" },
+      { name: "Git" },
+      { name: "GitHub Actions" },
+      { name: "Linux" },
     ],
   },
 ];

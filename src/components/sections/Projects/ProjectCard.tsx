@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Project } from "@/data";
+import { theme } from "@/config/theme";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,12 +11,13 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 30 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 300, damping: 30 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), { stiffness: 400, damping: 30 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), { stiffness: 400, damping: 30 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -29,155 +31,242 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+    setIsHovered(false);
   };
 
   return (
-    <motion.div
+    <motion.article
       ref={cardRef}
       className="relative flex-shrink-0 cursor-pointer group"
       style={{
-        width: "min(420px, 85vw)",
-        perspective: "1000px",
+        width: "440px",
+        height: "340px",
+        perspective: "1200px",
+        paddingLeft: "8px",
+        paddingBottom: "8px",
       }}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-100px" }}
       transition={{
-        duration: 1,
+        duration: 1.2,
         delay: index * 0.15,
         ease: [0.16, 1, 0.3, 1]
       }}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
+      {/* L-shaped border - Left side */}
       <motion.div
-        className="relative rounded-3xl overflow-hidden"
+        className="absolute left-0 top-[15%] bottom-0 w-[2px] pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom, ${project.color}60, ${project.color})`,
+        }}
+        animate={{
+          opacity: isHovered ? 1 : 0.5,
+          boxShadow: isHovered ? `0 0 10px ${project.color}50` : 'none',
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      
+      {/* L-shaped border - Bottom side */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-[15%] h-[2px] pointer-events-none"
+        style={{
+          background: `linear-gradient(to right, ${project.color}, ${project.color}60)`,
+        }}
+        animate={{
+          opacity: isHovered ? 1 : 0.5,
+          boxShadow: isHovered ? `0 0 10px ${project.color}50` : 'none',
+        }}
+        transition={{ duration: 0.3 }}
+      />
+
+      <motion.div
+        className="relative overflow-hidden h-full ml-2 mb-2"
         style={{
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
-          backgroundColor: `${project.color}08`,
-          border: `1px solid ${project.color}20`,
+          background: theme.cardBgGradient,
+          borderRadius: "0 28px 0 0",
         }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          scale: isHovered ? 1.02 : 1,
+          boxShadow: isHovered 
+            ? `0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px ${project.color}30, inset 0 1px 0 0 rgba(255,255,255,0.1)`
+            : `0 20px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 0 rgba(255,255,255,0.05)`,
+        }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Animated gradient background */}
+        {/* Animated border glow on hover */}
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: `
-              radial-gradient(ellipse at 50% 0%, ${project.color}12 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 100%, ${project.color}08 0%, transparent 40%)
-            `,
+            background: `linear-gradient(135deg, ${project.color}20 0%, transparent 50%, ${project.color}10 100%)`,
+            opacity: 0,
+            borderRadius: "0 28px 0 0",
           }}
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
         />
 
-        {/* Top accent bar with glow */}
-        <div className="absolute top-0 left-0 right-0">
-          <div
-            className="h-1 w-full"
-            style={{ backgroundColor: project.color }}
-          />
-          <div
-            className="h-16 w-full"
-            style={{
-              background: `linear-gradient(to bottom, ${project.color}20, transparent)`,
-            }}
-          />
-        </div>
+        {/* Background index number - Large Lando style */}
+        <motion.div
+          className="absolute -bottom-4 -right-2 text-[140px] font-black leading-none select-none pointer-events-none"
+          style={{ 
+            color: project.color,
+            WebkitTextStroke: `2px ${project.color}20`,
+            WebkitTextFillColor: 'transparent',
+          }}
+          animate={{ 
+            opacity: isHovered ? 0.3 : 0.15,
+            x: isHovered ? -10 : 0,
+            y: isHovered ? -10 : 0,
+          }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {String(index + 1).padStart(2, '0')}
+        </motion.div>
 
-        {/* ====== CARD CONTENT WITH EQUAL PADDING ====== */}
-        <div className="p-5 md:p-6 lg:p-8">
-
-          {/* Top area - Index number */}
-          <div className="relative h-28 md:h-36 mb-4">
-            <motion.div
-              className="absolute top-0 right-0 text-[90px] md:text-[110px] font-black leading-none select-none"
+        {/* Content container */}
+        <div className="relative z-10 h-full flex flex-col p-6 pb-8">
+          
+          {/* ====== Header: Category & Year ====== */}
+          <div className="flex items-center justify-between mb-4 pb-2">
+            <motion.span
+              className="inline-flex items-center text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full"
               style={{
-                color: project.color,
-                opacity: 0.15,
+                background: `linear-gradient(135deg, ${project.color} 0%, ${project.color}cc 100%)`,
+                color: theme.black,
+                boxShadow: `0 4px 15px ${project.color}40`,
               }}
-              initial={{ x: 30, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 0.15 }}
-              transition={{ duration: 1, delay: index * 0.15 + 0.3 }}
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
             >
-              0{index + 1}
-            </motion.div>
+              {project.category}
+            </motion.span>
+            
+            <motion.span
+              className="text-xs font-mono tracking-wider"
+              style={{ color: theme.cardTextMuted }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 + 0.15 }}
+            >
+              {project.year}
+            </motion.span>
           </div>
 
-          {/* Category pill */}
-          <motion.div
-            className="mb-5"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
-          >
-            <span
-              className="inline-flex items-center gap-3 text-xs font-semibold tracking-widest px-4 py-2 rounded-full"
-              style={{
-                backgroundColor: `${project.color}18`,
-                color: project.color,
-              }}
-            >
-              {project.category.toUpperCase()}
-              <span style={{ opacity: 0.5 }}>·</span>
-              <span style={{ opacity: 0.8 }}>{project.year}</span>
-            </span>
-          </motion.div>
-
-          {/* Title */}
+          {/* ====== Title ====== */}
           <motion.h3
-            className="text-2xl md:text-3xl font-bold mb-4 leading-tight"
+            className="text-3xl font-black tracking-tight leading-[1.1] mb-3 pb-2"
+            style={{ color: theme.cardText }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+            transition={{ duration: 0.7, delay: index * 0.1 + 0.2 }}
           >
             {project.title}
           </motion.h3>
 
-          {/* Description */}
-          <motion.p
-            className="text-sm md:text-base leading-relaxed mb-6"
-            style={{ color: "var(--color-dark-400)" }}
+          {/* ====== Description ====== */}
+          <motion.div
+            className="text-sm leading-[1.6] mb-4 pb-2"
+            style={{ color: theme.cardTextSecondary }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 + 0.4 }}
+            transition={{ duration: 0.7, delay: index * 0.1 + 0.25 }}
           >
-            {project.description}
-          </motion.p>
+            <span className="line-clamp-2">{project.description}</span>
+            {(project.github || project.live) ? (
+              <motion.a
+                href={project.live || project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 ml-1 font-semibold"
+                style={{ color: project.color }}
+                whileHover={{ x: 3 }}
+              >
+                more
+                <ArrowUpRight size={12} />
+              </motion.a>
+            ) : (
+              <span
+                className="inline-flex items-center gap-1 ml-1 font-semibold opacity-50 cursor-default"
+                style={{ color: project.color }}
+              >
+                more
+                <ArrowUpRight size={12} />
+              </span>
+            )}
+          </motion.div>
 
-          {/* Tech stack */}
+          {/* ====== Key Highlights ====== */}
+          {project.highlights && project.highlights.length > 0 && (
+            <motion.div
+              className="flex flex-wrap gap-3 mb-4 pb-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 + 0.28 }}
+            >
+              {project.highlights.map((highlight, i) => (
+                <span
+                  key={highlight}
+                  className="text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5"
+                  style={{ color: project.color }}
+                >
+                  <span 
+                    className="w-1.5 h-1.5 rounded-full" 
+                    style={{ background: project.color }}
+                  />
+                  {highlight}
+                </span>
+              ))}
+            </motion.div>
+          )}
+
+          {/* ====== Tech Stack ====== */}
           <motion.div
-            className="flex flex-wrap gap-2 mb-8"
+            className="flex flex-wrap gap-x-4 gap-y-1 mb-5 pb-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: index * 0.15 + 0.5 }}
+            transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
           >
-            {project.tech.map((tech) => (
-              <span
+            {project.tech.slice(0, 5).map((tech, i) => (
+              <motion.span
                 key={tech}
-                className="text-xs px-3 py-1.5 rounded-full font-medium"
+                className="text-[12px] font-medium"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  color: "var(--color-dark-300)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: theme.cardTextSecondary,
+                }}
+                whileHover={{ 
+                  color: project.color,
                 }}
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
+            {project.tech.length > 5 && (
+              <span
+                className="text-[12px] font-medium"
+                style={{
+                  color: theme.cardTextMuted,
+                }}
+              >
+                +{project.tech.length - 5} more
+              </span>
+            )}
           </motion.div>
 
-          {/* Action links */}
+          {/* ====== Action Links ====== */}
           <motion.div
-            className="relative z-50 flex items-center gap-6 pt-2"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 + 0.6 }}
+            className="flex items-center gap-3 pt-3 pb-2 border-t"
+            style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: index * 0.1 + 0.35 }}
             onClick={(e) => e.stopPropagation()}
           >
             {project.github && (
@@ -185,12 +274,20 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium transition-colors"
-                style={{ color: "var(--color-dark-400)" }}
-                whileHover={{ color: "#fff", x: 4 }}
+                className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-all"
+                style={{ 
+                  color: theme.cardTextSecondary,
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }}
+                whileHover={{ 
+                  color: theme.cardText,
+                  background: 'rgba(255,255,255,0.1)',
+                  x: 3,
+                }}
               >
-                <Github size={18} />
-                <span>View Code</span>
+                <Github size={14} />
+                <span>Code</span>
               </motion.a>
             )}
             {project.live && (
@@ -198,28 +295,41 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium"
-                style={{ color: project.color }}
-                whileHover={{ x: 4 }}
+                className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
+                style={{ 
+                  color: theme.black,
+                  background: `linear-gradient(135deg, ${project.color} 0%, ${project.color}dd 100%)`,
+                  boxShadow: `0 4px 15px ${project.color}30`,
+                }}
+                whileHover={{ 
+                  x: 3,
+                  boxShadow: `0 6px 20px ${project.color}50`,
+                }}
               >
                 <span>Live Demo</span>
-                <ArrowUpRight size={18} />
+                <ArrowUpRight size={14} />
               </motion.a>
             )}
           </motion.div>
         </div>
 
-        {/* Hover border glow */}
-        <motion.div
-          className="absolute inset-0 rounded-3xl pointer-events-none"
+        {/* Corner accent */}
+        <div
+          className="absolute top-0 right-0 w-24 h-24 pointer-events-none"
           style={{
-            border: `2px solid ${project.color}`,
-            opacity: 0,
+            background: `radial-gradient(circle at 100% 0%, ${project.color}15 0%, transparent 70%)`,
+            borderTopRightRadius: '28px',
           }}
-          whileHover={{ opacity: 0.5 }}
-          transition={{ duration: 0.3 }}
+        />
+        
+        {/* Bottom fade */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+          style={{
+            background: `linear-gradient(to top, ${theme.cardBg} 0%, transparent 100%)`,
+          }}
         />
       </motion.div>
-    </motion.div>
+    </motion.article>
   );
 }
