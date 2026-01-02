@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Brain, Cloud } from "lucide-react";
+import { Code2, Database, Brain, Cloud, FileCode } from "lucide-react";
 import type { SkillCategory } from "@/data";
 
 interface SkillCardProps {
@@ -12,6 +12,7 @@ const iconMap = {
   database: Database,
   brain: Brain,
   cloud: Cloud,
+  languages: FileCode,
 } as const;
 
 export function SkillCard({ category, index }: SkillCardProps) {

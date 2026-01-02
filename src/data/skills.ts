@@ -6,7 +6,7 @@ export interface SkillCategory {
   id: string;
   title: string;
   description: string;
-  icon: "code" | "database" | "brain" | "cloud";
+  icon: "code" | "database" | "brain" | "cloud" | "languages";
   color: string;
   skills: Skill[];
 }
@@ -14,6 +14,20 @@ export interface SkillCategory {
 import { theme } from "@/config/theme";
 
 export const skillCategories: SkillCategory[] = [
+  {
+    id: "languages",
+    title: "Programming Languages",
+    description: "Core languages I use to build software solutions",
+    icon: "languages",
+    color: "#f59e0b",
+    skills: [
+      { name: "Python" },
+      { name: "Java" },
+      { name: "C++" },
+      { name: "JavaScript" },
+      { name: "TypeScript" },
+    ],
+  },
   {
     id: "fullstack",
     title: "Full Stack",
@@ -23,11 +37,13 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "React" },
       { name: "Next.js" },
-      { name: "TypeScript" },
       { name: "Node.js" },
       { name: "Flask" },
       { name: "FastAPI" },
       { name: "Express" },
+      { name: "Spring" },
+      { name: "Django" },
+      { name: "AngularJS" },
       { name: "REST APIs" },
     ],
   },
@@ -41,11 +57,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "PyTorch" },
       { name: "TensorFlow" },
       { name: "Scikit-learn" },
-      { name: "NLP" },
-      { name: "Transformers" },
-      { name: "Deep Learning" },
-      { name: "Computer Vision" },
-      { name: "Keras" },
     ],
   },
   {
@@ -55,13 +66,12 @@ export const skillCategories: SkillCategory[] = [
     icon: "database",
     color: "var(--color-cyan)",
     skills: [
-      { name: "Python" },
       { name: "Pandas" },
+      { name: "NumPy" },
+      { name: "FastAI" },
       { name: "SQL" },
       { name: "PostgreSQL" },
       { name: "MongoDB" },
-      { name: "DuckDB" },
-      { name: "ETL" },
       { name: "Data Visualization" },
     ],
   },
@@ -76,6 +86,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "GCP" },
       { name: "Docker" },
       { name: "Kubernetes" },
+      { name: "Jenkins" },
       { name: "CI/CD" },
       { name: "Git" },
       { name: "GitHub Actions" },

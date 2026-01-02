@@ -61,8 +61,8 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: false, margin: "-50px" }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.06,
+        duration: 0.4,
+        delay: 0.05,
         ease: [0.16, 1, 0.3, 1],
       }}
       onMouseEnter={() => setIsFlipped(true)}
@@ -161,7 +161,7 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
                 </motion.div>
               </div>
 
-              {/* Bottom info - Name + Year */}
+              {/* Bottom info - Name */}
               <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
                 <div className="flex items-end justify-between">
                   <span
@@ -170,17 +170,9 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
                   >
                     {tech.category}
                   </span>
-                  <div className="text-right">
-                    <h3 className="text-sm md:text-base font-semibold tracking-tight">
-                      {tech.name}
-                    </h3>
-                    <span
-                      className="text-xs md:text-sm font-bold"
-                      style={{ color: tech.color }}
-                    >
-                      {tech.year}
-                    </span>
-                  </div>
+                  <h3 className="text-sm md:text-base font-semibold tracking-tight">
+                    {tech.name}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -231,7 +223,7 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
                   className="text-xs font-medium"
                   style={{ color: tech.color }}
                 >
-                  {tech.experience}
+                  {tech.category}
                 </span>
               </div>
 
