@@ -44,12 +44,12 @@ export function ContactSocials() {
               animate={{
                 width: isSpotlight ? 56 : 40,
                 height: isSpotlight ? 56 : 40,
-                backgroundColor: isSpotlight ? theme.accent : theme.black,
+                backgroundColor: isSpotlight ? "rgba(255, 193, 7, 0.3)" : theme.black,
                 boxShadow: isSpotlight
-                  ? `0 0 25px ${theme.accent}50, 0 0 50px ${theme.accent}25`
+                  ? "0 0 25px rgba(255, 193, 7, 0.5), 0 0 50px rgba(255, 193, 7, 0.25)"
                   : "0 4px 15px rgba(0,0,0,0.3)",
                 borderWidth: isSpotlight ? 3 : 2,
-                borderColor: isSpotlight ? theme.black : `${theme.accent}40`,
+                borderColor: isSpotlight ? "#FFC107" : `${theme.accent}40`,
               }}
               style={{
                 borderStyle: "solid",
@@ -70,7 +70,7 @@ export function ContactSocials() {
               >
                 <Icon
                   size={isSpotlight ? 26 : 18}
-                  style={{ color: isSpotlight ? theme.black : theme.white }}
+                  style={{ color: isSpotlight ? "#FFC107" : theme.white }}
                 />
               </motion.div>
             </motion.a>
