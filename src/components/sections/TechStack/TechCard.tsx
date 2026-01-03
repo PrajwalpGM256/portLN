@@ -61,8 +61,8 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: false, margin: "-50px" }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.06,
+        duration: 0.4,
+        delay: 0.05,
         ease: [0.16, 1, 0.3, 1],
       }}
       onMouseEnter={() => setIsFlipped(true)}
@@ -133,8 +133,8 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
                 />
               </svg>
 
-              {/* Icon - centered */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              {/* Icon and Name - centered */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <motion.div
                   className="relative"
                   whileHover={{ scale: 1.1 }}
@@ -159,29 +159,15 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
                     className="relative z-10 drop-shadow-lg"
                   />
                 </motion.div>
-              </div>
-
-              {/* Bottom info - Name + Year */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                <div className="flex items-end justify-between">
-                  <span
-                    className="text-[10px] md:text-xs font-medium tracking-wider uppercase"
-                    style={{ color: "var(--color-dark-500)" }}
-                  >
-                    {tech.category}
-                  </span>
-                  <div className="text-right">
-                    <h3 className="text-sm md:text-base font-semibold tracking-tight">
-                      {tech.name}
-                    </h3>
-                    <span
-                      className="text-xs md:text-sm font-bold"
-                      style={{ color: tech.color }}
-                    >
-                      {tech.year}
-                    </span>
-                  </div>
-                </div>
+                <h3 className="mt-4 text-base md:text-lg font-bold tracking-tight text-center">
+                  {tech.name}
+                </h3>
+                <span
+                  className="text-[10px] md:text-xs font-medium tracking-wider uppercase mt-1"
+                  style={{ color: "var(--color-dark-500)" }}
+                >
+                  {tech.category}
+                </span>
               </div>
             </div>
           </div>
@@ -222,71 +208,41 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
               />
 
               {/* Header */}
-              <div className="relative z-10 mb-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <Icon size={18} style={{ color: tech.color }} />
-                  <h3 className="text-base md:text-lg font-bold">{tech.name}</h3>
+              <div className="relative z-10 mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Icon size={22} style={{ color: tech.color }} />
+                  <h3 className="text-lg md:text-xl font-bold">{tech.name}</h3>
                 </div>
                 <span
-                  className="text-xs font-medium"
+                  className="text-sm font-semibold uppercase tracking-wider"
                   style={{ color: tech.color }}
                 >
-                  {tech.experience}
+                  {tech.category}
                 </span>
-              </div>
-
-              {/* Proficiency bar */}
-              <div className="relative z-10 mb-4">
-                <div className="flex items-center justify-between mb-1">
-                  <span
-                    className="text-[10px] tracking-wider uppercase"
-                    style={{ color: "var(--color-dark-500)" }}
-                  >
-                    Proficiency
-                  </span>
-                  <span
-                    className="text-xs font-bold"
-                    style={{ color: tech.color }}
-                  >
-                    {tech.proficiency}%
-                  </span>
-                </div>
-                <div
-                  className="h-1 rounded-full overflow-hidden"
-                  style={{ backgroundColor: "var(--color-dark-800)" }}
-                >
-                  <motion.div
-                    className="h-full rounded-full"
-                    style={{ backgroundColor: tech.color }}
-                    initial={{ width: 0 }}
-                    animate={{ width: isFlipped ? `${tech.proficiency}%` : 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  />
-                </div>
               </div>
 
               {/* Highlights */}
               <div className="relative z-10">
                 <span
-                  className="text-[10px] tracking-wider uppercase block mb-2"
-                  style={{ color: "var(--color-dark-500)" }}
+                  className="text-sm font-bold tracking-wider uppercase block mb-3"
+                  style={{ color: "var(--color-dark-400)" }}
                 >
                   Highlights
                 </span>
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {tech.highlights.map((highlight, i) => (
                     <motion.li
                       key={highlight}
-                      className="flex items-center gap-2 text-xs md:text-sm"
+                      className="flex items-center gap-2.5 text-sm md:text-base"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: isFlipped ? 1 : 0, x: isFlipped ? 0 : -10 }}
-                      transition={{ delay: 0.4 + i * 0.1 }}
+                      transition={{ delay: 0.2 + i * 0.1 }}
                     >
                       <span
-                        className="w-1 h-1 rounded-full flex-shrink-0"
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                         style={{ backgroundColor: tech.color }}
                       />
-                      <span style={{ color: "var(--color-dark-300)" }}>
+                      <span className="font-medium" style={{ color: "var(--color-dark-200)" }}>
                         {highlight}
                       </span>
                     </motion.li>

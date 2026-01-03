@@ -1,13 +1,12 @@
 export interface Skill {
   name: string;
-  level: number; // 0-100 for visual bar
 }
 
 export interface SkillCategory {
   id: string;
   title: string;
   description: string;
-  icon: "code" | "database" | "brain" | "cloud";
+  icon: "code" | "database" | "brain" | "cloud" | "languages";
   color: string;
   skills: Skill[];
 }
@@ -16,16 +15,36 @@ import { theme } from "@/config/theme";
 
 export const skillCategories: SkillCategory[] = [
   {
+    id: "languages",
+    title: "Programming Languages",
+    description: "Core languages I use to build software solutions",
+    icon: "languages",
+    color: "#f59e0b",
+    skills: [
+      { name: "Python" },
+      { name: "Java" },
+      { name: "C++" },
+      { name: "JavaScript" },
+      { name: "TypeScript" },
+    ],
+  },
+  {
     id: "fullstack",
     title: "Full Stack",
     description: "End-to-end application development with modern frameworks",
     icon: "code",
     color: theme.navbarBg,
     skills: [
-      { name: "React / Next.js", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Node.js", level: 85 },
-      { name: "Flask / FastAPI", level: 80 },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Node.js" },
+      { name: "Flask" },
+      { name: "FastAPI" },
+      { name: "Express" },
+      { name: "Spring" },
+      { name: "Django" },
+      { name: "AngularJS" },
+      { name: "REST APIs" },
     ],
   },
   {
@@ -35,10 +54,9 @@ export const skillCategories: SkillCategory[] = [
     icon: "brain",
     color: "var(--color-purple)",
     skills: [
-      { name: "PyTorch", level: 90 },
-      { name: "TensorFlow", level: 85 },
-      { name: "Scikit-learn", level: 90 },
-      { name: "NLP / Transformers", level: 80 },
+      { name: "PyTorch" },
+      { name: "TensorFlow" },
+      { name: "Scikit-learn" },
     ],
   },
   {
@@ -48,10 +66,13 @@ export const skillCategories: SkillCategory[] = [
     icon: "database",
     color: "var(--color-cyan)",
     skills: [
-      { name: "Python / Pandas", level: 95 },
-      { name: "SQL / PostgreSQL", level: 90 },
-      { name: "ETL / DuckDB", level: 85 },
-      { name: "Data Visualization", level: 85 },
+      { name: "Pandas" },
+      { name: "NumPy" },
+      { name: "FastAI" },
+      { name: "SQL" },
+      { name: "PostgreSQL" },
+      { name: "MongoDB" },
+      { name: "Data Visualization" },
     ],
   },
   {
@@ -61,10 +82,15 @@ export const skillCategories: SkillCategory[] = [
     icon: "cloud",
     color: "var(--color-orange)",
     skills: [
-      { name: "AWS / GCP", level: 80 },
-      { name: "Docker", level: 85 },
-      { name: "CI/CD", level: 80 },
-      { name: "Git / GitHub", level: 95 },
+      { name: "AWS" },
+      { name: "GCP" },
+      { name: "Docker" },
+      { name: "Kubernetes" },
+      { name: "Jenkins" },
+      { name: "CI/CD" },
+      { name: "Git" },
+      { name: "GitHub Actions" },
+      { name: "Linux" },
     ],
   },
 ];

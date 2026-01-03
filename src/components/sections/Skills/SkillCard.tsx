@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Brain, Cloud } from "lucide-react";
-import { SkillBar } from "@/components/animations";
+import { Code2, Database, Brain, Cloud, FileCode } from "lucide-react";
 import type { SkillCategory } from "@/data";
 
 interface SkillCardProps {
@@ -13,6 +12,7 @@ const iconMap = {
   database: Database,
   brain: Brain,
   cloud: Cloud,
+  languages: FileCode,
 } as const;
 
 export function SkillCard({ category, index }: SkillCardProps) {
@@ -55,7 +55,7 @@ export function SkillCard({ category, index }: SkillCardProps) {
       {/* Content */}
       <div className="relative p-8 md:p-10">
         {/* Header */}
-        <header className="flex items-start justify-between mb-8">
+        <header className="flex items-start justify-between mb-6">
           <div>
             {/* Icon */}
             <motion.div
@@ -92,20 +92,33 @@ export function SkillCard({ category, index }: SkillCardProps) {
 
         {/* Divider */}
         <div
-          className="h-px w-full mb-8"
+          className="h-px w-full mb-6"
           style={{ backgroundColor: "var(--color-dark-800)" }}
         />
 
-        {/* Skills list */}
-        <div className="space-y-5">
+        {/* Skills as text */}
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
           {category.skills.map((skill, i) => (
-            <SkillBar
+            <motion.span
               key={skill.name}
-              name={skill.name}
-              level={skill.level}
-              color={category.color}
-              delay={index * 0.15 + i * 0.1}
-            />
+              className="text-sm font-medium"
+              style={{
+                color: category.color,
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1 + i * 0.03,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              whileHover={{
+                opacity: 0.7,
+              }}
+            >
+              {skill.name}
+            </motion.span>
           ))}
         </div>
       </div>

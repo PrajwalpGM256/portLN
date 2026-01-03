@@ -14,10 +14,10 @@ export function Projects() {
   const allProjects = projects;
 
   // Calculate total scroll width needed
-  const cardWidth = 420; // approximate card width
-  const cardGap = 48; // gap between cards
+  const cardWidth = 380; // Fixed card width
+  const cardGap = 40; // gap between cards
   const totalCards = allProjects.length;
-  const endPadding = 200; // Extra padding to ensure last card is fully visible
+  const endPadding = 250; // Extra padding to ensure last card is fully visible
   const totalScrollWidth = totalCards * (cardWidth + cardGap) + endPadding;
 
   const { scrollYProgress } = useScroll({
