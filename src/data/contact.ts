@@ -1,6 +1,7 @@
 export interface ContactSocialLink {
   id: string;
   name: string;
+  icon: string;
   url: string;
   handle?: string;
 }
@@ -44,9 +45,10 @@ export const contactData = {
 
   // Social links
   socials: [
-    { id: "github", name: "GITHUB", url: "https://github.com/yourusername", handle: "@yourusername" },
-    { id: "linkedin", name: "LINKEDIN", url: "https://linkedin.com/in/yourusername" },
-    { id: "email", name: "EMAIL", url: "mailto:your.email@example.com" },
+    { id: "github", name: "GITHUB", icon: "github", url: "https://github.com/PrajwalpGM256", handle: "@PrajwalpGM256" },
+    { id: "linkedin", name: "LINKEDIN", icon: "linkedin", url: "https://www.linkedin.com/in/paztino/" },
+    { id: "instagram", name: "INSTAGRAM", icon: "instagram", url: "https://www.instagram.com/praj_wal_g_m" },
+    { id: "email", name: "EMAIL", icon: "mail", url: "mailto:pgm1431998@gmail.com" },
   ] as ContactSocialLink[],
 
   // Tech badges (like sponsor logos)
@@ -64,7 +66,7 @@ export const contactData = {
   // CTA
   cta: {
     text: "GET IN TOUCH",
-    email: "your.email@example.com",
+    email: "pgm1431998@gmail.com",
   },
 
   // Footer
