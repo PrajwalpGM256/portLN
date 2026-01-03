@@ -18,6 +18,11 @@ export interface ContactTechBadge {
   name: string;
 }
 
+export interface FooterLink {
+  name: string;
+  href: string;
+}
+
 export const contactData = {
   // Main statement
   statement: {
@@ -75,10 +80,7 @@ export const contactData = {
   footer: {
     copyright: `© ${new Date().getFullYear()} Prajwal. All rights reserved.`,
     builtWith: "Built with React & Framer Motion",
-    links: [
-      { name: "Privacy", href: "#" },
-      { name: "Resume", href: "#" },
-    ],
+    links: [] as FooterLink[],
   },
 
   // Animation timing
