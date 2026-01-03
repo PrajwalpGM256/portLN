@@ -83,7 +83,7 @@ export function SkillCard({ category, index }: SkillCardProps) {
             {/* Glow ring behind icon */}
             <motion.div
               className="absolute inset-0 blur-2xl rounded-full"
-              style={{ 
+              style={{
                 backgroundColor: category.color,
                 width: 120,
                 height: 120,
@@ -93,7 +93,7 @@ export function SkillCard({ category, index }: SkillCardProps) {
               animate={{ opacity: isHovered ? 0.4 : 0.15 }}
               transition={{ duration: 0.4 }}
             />
-            
+
             <Icon
               size={80}
               strokeWidth={1}
@@ -136,40 +136,17 @@ export function SkillCard({ category, index }: SkillCardProps) {
             {category.skills.map((skill, skillIndex) => (
               <motion.div
                 key={skill.name}
-                className="relative"
+                className="relative flex items-center gap-2"
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ delay: index * 0.1 + skillIndex * 0.05 + 0.3, duration: 0.4 }}
               >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm font-medium">{skill.name}</span>
-                  <span 
-                    className="text-xs font-semibold"
-                    style={{ color: category.color }}
-                  >
-                    {skill.level}%
-                  </span>
-                </div>
-                
-                {/* Progress bar */}
-                <div 
-                  className="h-1 rounded-full overflow-hidden"
-                  style={{ backgroundColor: "var(--color-dark-800)" }}
-                >
-                  <motion.div
-                    className="h-full rounded-full"
-                    style={{ backgroundColor: category.color }}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: false }}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: index * 0.1 + skillIndex * 0.08 + 0.4,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                  />
-                </div>
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: category.color }}
+                />
+                <span className="text-sm font-medium">{skill.name}</span>
               </motion.div>
             ))}
           </div>
