@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { Project } from "@/data";
 import { theme } from "@/config/theme";
 
@@ -69,7 +69,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         }}
         transition={{ duration: 0.3 }}
       />
-      
+
       {/* L-shaped border - Bottom side */}
       <motion.div
         className="absolute bottom-0 left-0 right-[15%] h-[2px] pointer-events-none"
@@ -94,7 +94,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         }}
         animate={{
           scale: isHovered ? 1.02 : 1,
-          boxShadow: isHovered 
+          boxShadow: isHovered
             ? `0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px ${project.color}30, inset 0 1px 0 0 rgba(255,255,255,0.1)`
             : `0 20px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 0 rgba(255,255,255,0.05)`,
         }}
@@ -115,12 +115,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Background index number - Large Lando style */}
         <motion.div
           className="absolute -bottom-4 -right-2 text-[140px] font-black leading-none select-none pointer-events-none"
-          style={{ 
+          style={{
             color: project.color,
             WebkitTextStroke: `2px ${project.color}20`,
             WebkitTextFillColor: 'transparent',
           }}
-          animate={{ 
+          animate={{
             opacity: isHovered ? 0.3 : 0.15,
             x: isHovered ? -10 : 0,
             y: isHovered ? -10 : 0,
@@ -132,7 +132,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Content container */}
         <div className="relative z-10 h-full flex flex-col p-6 pb-8">
-          
+
           {/* ====== Header: Category & Year ====== */}
           <div className="flex items-center justify-between mb-4 pb-2">
             <motion.span
@@ -148,7 +148,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             >
               {project.category}
             </motion.span>
-            
+
             <motion.span
               className="text-xs font-mono tracking-wider"
               style={{ color: theme.cardTextMuted }}
@@ -211,14 +211,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 + 0.28 }}
             >
-              {project.highlights.map((highlight, i) => (
+              {project.highlights.map((highlight, _i) => (
                 <span
                   key={highlight}
                   className="text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5"
                   style={{ color: project.color }}
                 >
-                  <span 
-                    className="w-1.5 h-1.5 rounded-full" 
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
                     style={{ background: project.color }}
                   />
                   {highlight}
@@ -234,14 +234,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
           >
-            {project.tech.slice(0, 5).map((tech, i) => (
+            {project.tech.slice(0, 5).map((tech, _i) => (
               <motion.span
                 key={tech}
                 className="text-[12px] font-medium"
                 style={{
                   color: theme.cardTextSecondary,
                 }}
-                whileHover={{ 
+                whileHover={{
                   color: project.color,
                 }}
               >
@@ -275,12 +275,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-all"
-                style={{ 
+                style={{
                   color: theme.cardTextSecondary,
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(255,255,255,0.1)',
                 }}
-                whileHover={{ 
+                whileHover={{
                   color: theme.cardText,
                   background: 'rgba(255,255,255,0.1)',
                   x: 3,
@@ -296,12 +296,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
-                style={{ 
+                style={{
                   color: theme.black,
                   background: `linear-gradient(135deg, ${project.color} 0%, ${project.color}dd 100%)`,
                   boxShadow: `0 4px 15px ${project.color}30`,
                 }}
-                whileHover={{ 
+                whileHover={{
                   x: 3,
                   boxShadow: `0 6px 20px ${project.color}50`,
                 }}
@@ -321,7 +321,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             borderTopRightRadius: '28px',
           }}
         />
-        
+
         {/* Bottom fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"

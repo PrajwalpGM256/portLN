@@ -38,7 +38,7 @@ interface TechCardProps {
 // Lando-style border path with cut corner (bottom-right)
 const CARD_CLIP_PATH = "polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%)";
 
-export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCardProps) {
+export function TechCard({ tech, index: _index, columnIndex, scrollYProgress }: TechCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const Icon = iconMap[tech.icon] || Component;
 
@@ -53,7 +53,7 @@ export function TechCard({ tech, index, columnIndex, scrollYProgress }: TechCard
   return (
     <motion.article
       className="relative cursor-pointer group"
-      style={{ 
+      style={{
         perspective: "1000px",
         y: yOffset, // Apply parallax
       }}
