@@ -37,9 +37,11 @@ export const contactData = {
   // Navigation links
   navLinks: [
     { id: "home", name: "HOME", href: "#hero" },
-    { id: "about", name: "ABOUT", href: "#about" },
-    { id: "work", name: "WORK", href: "#work" },
-    { id: "skills", name: "SKILLS", href: "#skills" },
+    { id: "quote", name: "QUOTE", href: "#quote" },
+    { id: "projects", name: "PROJECTS", href: "#work" },
+    { id: "tech", name: "TECH", href: "#tech" },
+    { id: "journey", name: "JOURNEY", href: "#journey" },
+    { id: "social", name: "SOCIAL", href: "#socials" },
     { id: "contact", name: "CONTACT", href: "#contact", accent: true },
   ] as ContactNavLink[],
 

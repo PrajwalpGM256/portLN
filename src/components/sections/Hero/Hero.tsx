@@ -21,6 +21,7 @@ export function Hero() {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="h-screen relative flex items-center justify-center overflow-hidden"
       style={{ perspective: "1000px" }}
