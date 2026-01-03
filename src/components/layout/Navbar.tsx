@@ -66,91 +66,91 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-// Slot-machine style Contact Me button (desktop)
-function SlotContactButton() {
-  const text = "Contact Me";
-  const [settled, setSettled] = useState(Array(text.length).fill(false));
-  useEffect(() => {
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    for (let i = 0; i < text.length; i++) {
-      timers.push(setTimeout(() => {
-        setSettled(prev => {
-          const next = [...prev];
-          next[i] = true;
-          return next;
-        });
-      }, 10000 + i * 200));
-    }
-    return () => { timers.forEach(clearTimeout); };
-  }, []);
-  return (
-    <a
-      href="#contact"
-      className="ml-16 px-3 py-1 rounded-full font-bold text-sm tracking-widest uppercase text-black transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black bg-transparent border-0"
-      style={{ background: "transparent", border: 0, boxShadow: "none" }}
-      onClick={e => {
-        e.preventDefault();
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-      }}
-    >
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          initial={false}
-          animate={settled[i] ? { rotateX: 0 } : { rotateX: [0, 360, 0, 360, 0, 360, 0] }}
-          transition={{ duration: settled[i] ? 0.3 : 10, ease: "easeInOut" }}
-          style={{ display: "inline-block", transformOrigin: "50% 60%", minWidth: "0.7em" }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </a>
-  );
-}
+  // Slot-machine style Contact Me button (desktop)
+  function SlotContactButton() {
+    const text = "Contact Me";
+    const [settled, setSettled] = useState(Array(text.length).fill(false));
+    useEffect(() => {
+      const timers: ReturnType<typeof setTimeout>[] = [];
+      for (let i = 0; i < text.length; i++) {
+        timers.push(setTimeout(() => {
+          setSettled(prev => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, 10000 + i * 200));
+      }
+      return () => { timers.forEach(clearTimeout); };
+    }, []);
+    return (
+      <a
+        href="#contact"
+        className="ml-16 px-3 py-1 rounded-full font-bold text-sm tracking-widest uppercase text-black transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black bg-transparent border-0 hover:scale-110"
+        style={{ background: "transparent", border: 0, boxShadow: "none" }}
+        onClick={e => {
+          e.preventDefault();
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        {text.split("").map((char, i) => (
+          <motion.span
+            key={i}
+            initial={false}
+            animate={settled[i] ? { rotateX: 0 } : { rotateX: [0, 360, 0, 360, 0, 360, 0] }}
+            transition={{ duration: settled[i] ? 0.3 : 10, ease: "easeInOut" }}
+            style={{ display: "inline-block", transformOrigin: "50% 60%", minWidth: "0.7em" }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </a>
+    );
+  }
 
-// Slot-machine style Contact Me button (mobile)
-interface SlotContactButtonMobileProps {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-function SlotContactButtonMobile({ setIsOpen }: SlotContactButtonMobileProps) {
-  const text = "Contact Me";
-  const [settled, setSettled] = useState(Array(text.length).fill(false));
-  useEffect(() => {
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    for (let i = 0; i < text.length; i++) {
-      timers.push(setTimeout(() => {
-        setSettled(prev => {
-          const next = [...prev];
-          next[i] = true;
-          return next;
-        });
-      }, 10000 + i * 200));
-    }
-    return () => { timers.forEach(clearTimeout); };
-  }, []);
-  return (
-    <a
-      href="#contact"
-      onClick={e => {
-        e.preventDefault();
-        setIsOpen(false);
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-      }}
-      className="text-2xl font-black uppercase px-5 py-1.5 rounded-full text-black mt-4 bg-transparent border-0"
-      style={{ background: "transparent", border: 0, boxShadow: "none" }}
-    >
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          initial={false}
-          animate={settled[i] ? { rotateX: 0 } : { rotateX: [0, 360, 0, 360, 0, 360, 0] }}
-          transition={{ duration: settled[i] ? 0.3 : 10, ease: "easeInOut" }}
-          style={{ display: "inline-block", transformOrigin: "50% 60%", minWidth: "0.7em" }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </a>
-  );
-}
+  // Slot-machine style Contact Me button (mobile)
+  interface SlotContactButtonMobileProps {
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+  function SlotContactButtonMobile({ setIsOpen }: SlotContactButtonMobileProps) {
+    const text = "Contact Me";
+    const [settled, setSettled] = useState(Array(text.length).fill(false));
+    useEffect(() => {
+      const timers: ReturnType<typeof setTimeout>[] = [];
+      for (let i = 0; i < text.length; i++) {
+        timers.push(setTimeout(() => {
+          setSettled(prev => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, 10000 + i * 200));
+      }
+      return () => { timers.forEach(clearTimeout); };
+    }, []);
+    return (
+      <a
+        href="#contact"
+        onClick={e => {
+          e.preventDefault();
+          setIsOpen(false);
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        }}
+        className="text-2xl font-black uppercase px-5 py-1.5 rounded-full text-black mt-4 bg-transparent border-0 hover:scale-110 transition-transform duration-200"
+        style={{ background: "transparent", border: 0, boxShadow: "none" }}
+      >
+        {text.split("").map((char, i) => (
+          <motion.span
+            key={i}
+            initial={false}
+            animate={settled[i] ? { rotateX: 0 } : { rotateX: [0, 360, 0, 360, 0, 360, 0] }}
+            transition={{ duration: settled[i] ? 0.3 : 10, ease: "easeInOut" }}
+            style={{ display: "inline-block", transformOrigin: "50% 60%", minWidth: "0.7em" }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </a>
+    );
+  }
 }

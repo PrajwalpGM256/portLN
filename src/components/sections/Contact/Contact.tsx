@@ -48,14 +48,10 @@ export function Contact() {
       {/* Bottom section */}
       <div className="site-container pb-8">
         <ContactMarquee />
-        
+
         {/* Simple footer - just copyright */}
-        <div className="mt-6 flex justify-between items-center text-[11px]" style={{ color: theme.accent }}>
+        <div className="mt-6 flex justify-center items-center text-[11px]" style={{ color: theme.accent }}>
           <p>© {new Date().getFullYear()} Prajwal. All rights reserved</p>
-          <div className="flex gap-6">
-            <a href="#" className="uppercase tracking-[0.2em] hover:text-black transition-colors">Privacy Policy</a>
-            <a href="#" className="uppercase tracking-[0.2em] hover:text-black transition-colors">Terms</a>
-          </div>
         </div>
       </div>
     </section>
