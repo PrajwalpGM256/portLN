@@ -288,18 +288,21 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                 >
                   Key Highlights
                 </span>
-                <ul className="space-y-4">
-                  {exp.highlights.slice(0, 3).map((highlight, i) => (
+                <ul className="space-y-3">
+                  {exp.highlights.slice(0, 5).map((highlight, i) => (
                     <motion.li
                       key={highlight}
-                      className="flex items-start gap-4"
+                      className="flex gap-3"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.35 + i * 0.15 }}
+                      transition={{ delay: 0.35 + i * 0.1 }}
                     >
                       <span
-                        className="w-5 h-0.5 flex-shrink-0 mt-2.50.08"
-                        style={{ backgroundColor: exp.color }}
+                        className="w-4 h-[2px] flex-shrink-0 rounded-full"
+                        style={{
+                          backgroundColor: exp.color,
+                          marginTop: "0.75em"
+                        }}
                       />
                       <span
                         className="text-sm md:text-base leading-relaxed"
@@ -346,7 +349,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
           {/* Large Index Number */}
           <motion.div
             className="absolute bottom-4 right-6 md:bottom-8 md:right-12 text-[80px] md:text-[140px] font-black leading-none select-none pointer-events-none"
-            style={{ color: exp.color, opacity: 0.15}}
+            style={{ color: exp.color, opacity: 0.15 }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
