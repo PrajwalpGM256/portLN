@@ -1,6 +1,7 @@
 export interface ContactSocialLink {
   id: string;
   name: string;
+  icon: string;
   url: string;
   handle?: string;
 }
@@ -36,17 +37,20 @@ export const contactData = {
   // Navigation links
   navLinks: [
     { id: "home", name: "HOME", href: "#hero" },
-    { id: "about", name: "ABOUT", href: "#about" },
-    { id: "work", name: "WORK", href: "#work" },
-    { id: "skills", name: "SKILLS", href: "#skills" },
+    { id: "quote", name: "QUOTE", href: "#quote" },
+    { id: "projects", name: "PROJECTS", href: "#work" },
+    { id: "tech", name: "TECH", href: "#tech" },
+    { id: "journey", name: "JOURNEY", href: "#journey" },
+    { id: "social", name: "SOCIAL", href: "#socials" },
     { id: "contact", name: "CONTACT", href: "#contact", accent: true },
   ] as ContactNavLink[],
 
   // Social links
   socials: [
-    { id: "github", name: "GITHUB", url: "https://github.com/yourusername", handle: "@yourusername" },
-    { id: "linkedin", name: "LINKEDIN", url: "https://linkedin.com/in/yourusername" },
-    { id: "email", name: "EMAIL", url: "mailto:your.email@example.com" },
+    { id: "github", name: "GITHUB", icon: "github", url: "https://github.com/PrajwalpGM256", handle: "@PrajwalpGM256" },
+    { id: "linkedin", name: "LINKEDIN", icon: "linkedin", url: "https://www.linkedin.com/in/paztino/" },
+    { id: "instagram", name: "INSTAGRAM", icon: "instagram", url: "https://www.instagram.com/praj_wal_g_m" },
+    { id: "email", name: "EMAIL", icon: "mail", url: "mailto:pgm1431998@gmail.com" },
   ] as ContactSocialLink[],
 
   // Tech badges (like sponsor logos)
@@ -64,7 +68,7 @@ export const contactData = {
   // CTA
   cta: {
     text: "GET IN TOUCH",
-    email: "your.email@example.com",
+    email: "pgm1431998@gmail.com",
   },
 
   // Footer

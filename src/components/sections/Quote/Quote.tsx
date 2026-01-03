@@ -9,7 +9,7 @@ export function Quote() {
   const isMarqueeInView = useInView(marqueeRef, { once: false, margin: "-50px" });
 
   return (
-    <section className="relative site-section">
+    <section id="quote" className="relative site-section">
       {/* Quote Text */}
       <QuoteText />
 
