@@ -9,18 +9,20 @@ export function ContactFooter() {
       <p style={{ color: "var(--color-dark-500)" }}>{footer.copyright}</p>
 
       {/* Links */}
-      <div className="flex gap-6">
-        {footer.links.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className="uppercase tracking-[0.2em] transition-colors duration-300 hover:text-[var(--color-primary)]"
-            style={{ color: "var(--color-dark-500)" }}
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
+      {footer.links.length > 0 && (
+        <div className="flex gap-6">
+          {footer.links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="uppercase tracking-[0.2em] transition-colors duration-300 hover:text-[var(--color-primary)]"
+              style={{ color: "var(--color-dark-500)" }}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
     </footer>
   );
 }
