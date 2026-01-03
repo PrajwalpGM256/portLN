@@ -64,7 +64,17 @@ export const techStack: TechItem[] = [
     proficiency: 90,
     highlights: ["Type Safety", "Generics", "Advanced Patterns"],
   },
-  
+  {
+    id: "csharp",
+    name: "C#",
+    year: "2020",
+    category: "Language",
+    color: "#512BD4",
+    icon: "code",
+    proficiency: 85,
+    highlights: [".NET Development", "OOP", "Enterprise Apps"],
+  },
+
   // Full Stack
   {
     id: "react",
@@ -147,6 +157,26 @@ export const techStack: TechItem[] = [
     highlights: ["ORM", "Admin Panel", "Full-stack Python"],
   },
   {
+    id: "dotnet",
+    name: ".NET",
+    year: "2020",
+    category: "Framework",
+    color: "#512BD4",
+    icon: "layers",
+    proficiency: 85,
+    highlights: ["ASP.NET Core", "Web APIs", "Cross-platform"],
+  },
+  {
+    id: "entityframework",
+    name: "Entity Framework",
+    year: "2020",
+    category: "ORM",
+    color: "#68217A",
+    icon: "database",
+    proficiency: 82,
+    highlights: ["Code First", "LINQ Queries", "Migrations"],
+  },
+  {
     id: "angularjs",
     name: "AngularJS",
     year: "2021",
@@ -156,7 +186,7 @@ export const techStack: TechItem[] = [
     proficiency: 75,
     highlights: ["Two-way Binding", "Directives", "SPA Development"],
   },
-  
+
   // Machine Learning
   {
     id: "pytorch",
@@ -188,7 +218,7 @@ export const techStack: TechItem[] = [
     proficiency: 90,
     highlights: ["Classification", "Regression", "Clustering"],
   },
-  
+
   // Data Engineering
   {
     id: "pandas",
@@ -250,7 +280,17 @@ export const techStack: TechItem[] = [
     proficiency: 82,
     highlights: ["NoSQL Design", "Aggregation", "Indexing"],
   },
-  
+  {
+    id: "mssql",
+    name: "MSSQL Server",
+    year: "2020",
+    category: "Database",
+    color: "#CC2927",
+    icon: "database",
+    proficiency: 85,
+    highlights: ["T-SQL", "Stored Procedures", "Enterprise Data"],
+  },
+
   // Cloud & DevOps
   {
     id: "aws",
@@ -337,10 +377,10 @@ export const techStack: TechItem[] = [
 export const techStackSection = {
   titleLine1: "Tech",
   titleLine2: "Hall of Fame",
-  description: "From modern frameworks to battle-tested tools, these are the technologies I use to build exceptional digital experiences.",
+  description: "The programming languages, frameworks, libraries, and cloud services I use to build robust applications.",
   ctaText: "View All Skills",
   ctaLink: "#skills",
-  
+
   timing: {
     titleDelay: 0.2,
     descDelay: 0.4,
