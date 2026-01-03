@@ -31,7 +31,7 @@ export function SocialLinkItem({ social }: SocialLinkItemProps) {
       <Icon
         size={22}
         className="transition-colors duration-300"
-        style={{ color: "var(--color-dark-300)" }}
+        style={{ color: "#CCFF00" }}
       />
     </a>
   );

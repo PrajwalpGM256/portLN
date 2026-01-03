@@ -52,7 +52,7 @@ export function Social() {
               fontFamily: "Georgia, serif",
               fontStyle: "italic",
               fontWeight: 400,
-              color: "var(--color-dark-400)",
+              color: "#CCFF00",
             }}
           >
             {socialsSection.headingLine2}
