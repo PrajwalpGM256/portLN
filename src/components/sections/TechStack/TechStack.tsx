@@ -61,7 +61,7 @@ export function TechStack() {
               className="text-base md:text-lg leading-relaxed"
               style={{ color: "var(--color-dark-400)" }}
             >
-              The <span style={{ color: "#CCFF00", fontWeight: 600 }}>programming languages</span>, <span style={{ color: "#FFD700", fontWeight: 600 }}>frameworks</span>, <span style={{ color: "#FF8C00", fontWeight: 600 }}>libraries</span>, and <span style={{ color: "#FF4444", fontWeight: 600 }}>cloud services</span> I use to build robust applications.
+              The <span style={{ color: "#CCFF00", fontWeight: 600 }}>programming languages</span>, <span style={{ color: "#9EFF00", fontWeight: 600 }}>frameworks</span>, <span style={{ color: "#66FF00", fontWeight: 600 }}>libraries</span>, and <span style={{ color: "#39FF14", fontWeight: 600 }}>cloud services</span> I use to build robust applications.
             </p>
           </motion.div>
         </div>
