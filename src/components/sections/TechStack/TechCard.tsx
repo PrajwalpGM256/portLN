@@ -47,7 +47,7 @@ export function TechCard({ tech, index: _index, columnIndex, scrollYProgress }: 
   const yOffset = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    isOddColumn ? [80, 0, -80] : [-80, 0, 80]
+    isOddColumn ? [150, 0, -150] : [-150, 0, 150]
   );
 
   return (
