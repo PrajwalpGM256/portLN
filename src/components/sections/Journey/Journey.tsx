@@ -179,6 +179,8 @@ interface StoryCardProps {
 }
 
 function StoryCard({ experience: exp }: StoryCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.div
       className="absolute inset-0 flex items-center"
@@ -188,13 +190,163 @@ function StoryCard({ experience: exp }: StoryCardProps) {
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="w-full h-full">
-        <div
-          className="relative rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 h-full flex flex-col"
+        <motion.div
+          className="relative rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 h-full flex flex-col cursor-pointer"
           style={{
-            background: `linear-gradient(135deg, ${exp.color}12 0%, transparent 50%)`,
-            border: `1px solid ${exp.color}20`,
+            background: `linear-gradient(135deg, ${exp.color}08 0%, transparent 40%, ${exp.color}05 100%)`,
           }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          animate={{
+            scale: isHovered ? 1.008 : 1,
+          }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
+          {/* Animated Gradient Border */}
+          <div
+            className="absolute inset-0 rounded-2xl pointer-events-none"
+            style={{
+              padding: '2px',
+              background: isHovered
+                ? `linear-gradient(90deg, ${exp.color}, ${exp.color}60, ${exp.color}, ${exp.color}60, ${exp.color})`
+                : `linear-gradient(90deg, ${exp.color}30, ${exp.color}15, ${exp.color}30)`,
+              backgroundSize: isHovered ? '200% 100%' : '100% 100%',
+              animation: isHovered ? 'borderFlow 2s linear infinite' : 'none',
+              transition: 'all 0.4s ease',
+            }}
+          >
+            <div
+              className="w-full h-full rounded-2xl"
+              style={{ background: theme.black }}
+            />
+          </div>
+
+
+          {/* Corner Brackets - Top Left */}
+          <motion.div
+            className="absolute top-3 left-3 pointer-events-none"
+            animate={{
+              opacity: isHovered ? 1 : 0.4,
+              scale: isHovered ? 1 : 0.9,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <motion.path
+                d="M2 8V2H8"
+                stroke={exp.color}
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={{
+                  filter: isHovered ? `drop-shadow(0 0 6px ${exp.color})` : 'none',
+                }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Corner Brackets - Top Right */}
+          <motion.div
+            className="absolute top-3 right-3 pointer-events-none"
+            animate={{
+              opacity: isHovered ? 1 : 0.4,
+              scale: isHovered ? 1 : 0.9,
+            }}
+            transition={{ duration: 0.3, delay: 0.05 }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <motion.path
+                d="M22 8V2H16"
+                stroke={exp.color}
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={{
+                  filter: isHovered ? `drop-shadow(0 0 6px ${exp.color})` : 'none',
+                }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Corner Brackets - Bottom Left */}
+          <motion.div
+            className="absolute bottom-3 left-3 pointer-events-none"
+            animate={{
+              opacity: isHovered ? 1 : 0.4,
+              scale: isHovered ? 1 : 0.9,
+            }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <motion.path
+                d="M2 16V22H8"
+                stroke={exp.color}
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={{
+                  filter: isHovered ? `drop-shadow(0 0 6px ${exp.color})` : 'none',
+                }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Corner Brackets - Bottom Right */}
+          <motion.div
+            className="absolute bottom-3 right-3 pointer-events-none"
+            animate={{
+              opacity: isHovered ? 1 : 0.4,
+              scale: isHovered ? 1 : 0.9,
+            }}
+            transition={{ duration: 0.3, delay: 0.15 }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <motion.path
+                d="M22 16V22H16"
+                stroke={exp.color}
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={{
+                  filter: isHovered ? `drop-shadow(0 0 6px ${exp.color})` : 'none',
+                }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Holographic Shimmer */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none rounded-2xl"
+            style={{
+              background: `linear-gradient(105deg, transparent 40%, ${exp.color}10 45%, ${exp.color}20 50%, ${exp.color}10 55%, transparent 60%)`,
+              backgroundSize: '200% 100%',
+            }}
+            animate={{
+              backgroundPosition: isHovered ? ['200% 0', '-200% 0'] : '200% 0',
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: isHovered ? Infinity : 0,
+              repeatDelay: 1,
+            }}
+          />
+
+          {/* Outer Glow */}
+          <motion.div
+            className="absolute -inset-1 rounded-2xl pointer-events-none"
+            style={{
+              background: `radial-gradient(ellipse at center, ${exp.color}15 0%, transparent 70%)`,
+            }}
+            animate={{
+              opacity: isHovered ? 1 : 0,
+              scale: isHovered ? 1.02 : 1,
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* CSS for border animation */}
+          <style>{`
+            @keyframes borderFlow {
+              0% { background-position: 0% 50%; }
+              100% { background-position: 200% 50%; }
+            }
+          `}</style>
           {/* Background Pattern */}
           <div
             className="absolute inset-0 opacity-[0.02]"
@@ -356,7 +508,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
           >
             {String(experience.findIndex((e) => e.id === exp.id) + 1).padStart(2, "0")}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
