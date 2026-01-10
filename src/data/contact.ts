@@ -66,7 +66,7 @@ export const contactData = {
     { id: "tailwind", name: "Tailwind" },
     { id: "vite", name: "Vite" },
     { id: "python", name: "Python" },
-    { id: "pytorch", name: "PyTorch" },
+    { id: "lenis", name: "Lenis" },
     { id: "nodejs", name: "Node.js" },
   ] as ContactTechBadge[],
 
