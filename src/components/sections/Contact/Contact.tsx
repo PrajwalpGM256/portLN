@@ -45,11 +45,13 @@ export function Contact() {
         </div>
       </div>
 
-      {/* Bottom section */}
-      <div className="site-container pb-8">
+      {/* Full-width Marquee */}
+      <div className="w-full">
         <ContactMarquee />
+      </div>
 
-        {/* Simple footer - just copyright */}
+      {/* Footer */}
+      <div className="site-container pb-8">
         <div className="mt-6 flex justify-center items-center text-[11px]" style={{ color: theme.accent }}>
           <p>© {new Date().getFullYear()} Prajwal. All rights reserved</p>
         </div>

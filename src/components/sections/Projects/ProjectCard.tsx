@@ -117,11 +117,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           className="absolute -bottom-4 -right-2 text-[140px] font-black leading-none select-none pointer-events-none"
           style={{
             color: project.color,
-            WebkitTextStroke: `2px ${project.color}20`,
             WebkitTextFillColor: 'transparent',
+            WebkitTextStroke: isHovered ? `3px ${project.color}` : `2px ${project.color}30`,
+            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
           animate={{
-            opacity: isHovered ? 0.3 : 0.15,
+            opacity: isHovered ? 0.6 : 0.15,
             x: isHovered ? -10 : 0,
             y: isHovered ? -10 : 0,
           }}
@@ -134,7 +135,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="relative z-10 h-full flex flex-col p-6 pb-8">
 
           {/* ====== Header: Category & Year ====== */}
-          <div className="flex items-center justify-between mb-4 pb-2">
+          <div className="flex items-center justify-between mb-5 pb-3">
             <motion.span
               className="inline-flex items-center text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full"
               style={{
@@ -162,7 +163,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* ====== Title ====== */}
           <motion.h3
-            className="text-3xl font-black tracking-tight leading-[1.1] mb-3 pb-2"
+            className="text-3xl font-black tracking-tight leading-[1.1] mb-4 pb-3"
             style={{ color: theme.cardText }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -173,40 +174,19 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* ====== Description ====== */}
           <motion.div
-            className="text-sm leading-[1.6] mb-4 pb-2"
+            className="text-sm leading-[1.6] mb-5 pb-3"
             style={{ color: theme.cardTextSecondary }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: index * 0.1 + 0.25 }}
           >
-            <span className="line-clamp-2">{project.description}</span>
-            {(project.github || project.live) ? (
-              <motion.a
-                href={project.live || project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 ml-1 font-semibold"
-                style={{ color: project.color }}
-                whileHover={{ x: 3 }}
-              >
-                more
-                <ArrowUpRight size={12} />
-              </motion.a>
-            ) : (
-              <span
-                className="inline-flex items-center gap-1 ml-1 font-semibold opacity-50 cursor-default"
-                style={{ color: project.color }}
-              >
-                more
-                <ArrowUpRight size={12} />
-              </span>
-            )}
+            <span className="line-clamp-3">{project.description}</span>
           </motion.div>
 
           {/* ====== Key Highlights ====== */}
           {project.highlights && project.highlights.length > 0 && (
             <motion.div
-              className="flex flex-wrap gap-3 mb-4 pb-2"
+              className="flex flex-wrap gap-3 mb-5 pb-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 + 0.28 }}

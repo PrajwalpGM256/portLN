@@ -5,7 +5,7 @@ import { TechCard } from "./TechCard";
 import { theme } from "@/config/theme";
 
 // Grid column count for different breakpoints (used for columnIndex calculation)
-const COLUMNS = { sm: 2, md: 2, lg: 3, xl: 4 };
+const COLUMNS = { sm: 2, md: 3, lg: 4, xl: 6 };
 
 export function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,7 +36,7 @@ export function TechStack() {
       {/* Gradient background removed for cleaner look */}
 
       {/* Header */}
-      <div ref={headerRef} className="site-container mb-16 md:mb-24 lg:mb-32">
+      <div ref={headerRef} className="site-container mb-20 md:mb-28 lg:mb-36 pb-8 md:pb-12 lg:pb-16">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16">
           {/* Left side - Title */}
           <div className="lg:max-w-xl">
@@ -61,17 +61,17 @@ export function TechStack() {
               className="text-base md:text-lg leading-relaxed"
               style={{ color: "var(--color-dark-400)" }}
             >
-              {techStackSection.description}
+              The <span style={{ color: "#CCFF00", fontWeight: 600 }}>programming languages</span>, <span style={{ color: "#9EFF00", fontWeight: 600 }}>frameworks</span>, <span style={{ color: "#66FF00", fontWeight: 600 }}>libraries</span>, and <span style={{ color: "#39FF14", fontWeight: 600 }}>cloud services</span> I use to build robust applications.
             </p>
           </motion.div>
         </div>
       </div>
 
       {/* Grid - uniform cards with alternating parallax */}
-      <div className="site-container overflow-hidden py-12">
-        <div 
+      <div className="site-container overflow-hidden py-16">
+        <div
           ref={gridRef}
-          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 lg:gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 md:gap-4 lg:gap-5"
         >
           {techStack.map((tech, index) => (
             <TechCard

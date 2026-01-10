@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Instagram, Mail, GraduationCap, LucideIcon } from "lucide-react";
 import { contactData } from "@/data";
@@ -17,14 +17,45 @@ const SPOTLIGHT_INTERVAL = 4000; // 4 seconds per spotlight
 export function ContactSocials() {
   const { socials } = contactData;
   const [spotlightIndex, setSpotlightIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Rotate spotlight every N seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Start/restart the carousel
+  const startCarousel = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
       setSpotlightIndex((prev) => (prev + 1) % socials.length);
     }, SPOTLIGHT_INTERVAL);
-    return () => clearInterval(interval);
+  };
+
+  // Stop the carousel
+  const stopCarousel = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  // Initialize carousel
+  useEffect(() => {
+    startCarousel();
+    return () => stopCarousel();
   }, [socials.length]);
+
+  // Handle hover - pause carousel and highlight hovered icon
+  const handleMouseEnter = (index: number) => {
+    stopCarousel();
+    setHoveredIndex(index);
+  };
+
+  // Handle hover end - resume carousel
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+    startCarousel();
+  };
+
+  // Determine which icon should be highlighted
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : spotlightIndex;
 
   return (
     <div className="flex flex-col items-end gap-4">
@@ -32,7 +63,7 @@ export function ContactSocials() {
       <div className="flex items-center gap-3">
         {socials.map((social, index) => {
           const Icon = iconMap[social.icon] || Mail;
-          const isSpotlight = index === spotlightIndex;
+          const isSpotlight = index === activeIndex;
 
           return (
             <motion.a
@@ -60,6 +91,8 @@ export function ContactSocials() {
                 damping: 25,
               }}
               whileHover={{ scale: 1.1 }}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
               title={social.name}
             >
               <motion.div
@@ -81,7 +114,7 @@ export function ContactSocials() {
       {/* Platform name label */}
       <AnimatePresence mode="wait">
         <motion.span
-          key={spotlightIndex}
+          key={activeIndex}
           className="text-xs font-bold tracking-[0.2em] uppercase"
           style={{ color: theme.black }}
           initial={{ opacity: 0, y: 5 }}
@@ -89,7 +122,7 @@ export function ContactSocials() {
           exit={{ opacity: 0, y: -5 }}
           transition={{ duration: 0.2 }}
         >
-          {socials[spotlightIndex]?.name}
+          {socials[activeIndex]?.name}
         </motion.span>
       </AnimatePresence>
     </div>

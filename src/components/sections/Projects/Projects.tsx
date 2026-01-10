@@ -10,14 +10,14 @@ export function Projects() {
   const horizontalRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: false, margin: "-100px" });
 
-  // Show all projects instead of just featured
-  const allProjects = projects;
+  // Show only featured projects
+  const featuredProjects = projects.filter((p) => p.featured);
 
   // Calculate total scroll width needed
   const cardWidth = 380; // Fixed card width
   const cardGap = 40; // gap between cards
-  const totalCards = allProjects.length;
-  const endPadding = 250; // Extra padding to ensure last card is fully visible
+  const totalCards = featuredProjects.length;
+  const endPadding = 600; // Extra buffer padding after the last card
   const totalScrollWidth = totalCards * (cardWidth + cardGap) + endPadding;
 
   const { scrollYProgress } = useScroll({
@@ -142,7 +142,7 @@ export function Projects() {
             }
           `}</style>
 
-          {allProjects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </motion.div>

@@ -35,6 +35,7 @@ export const projects: Project[] = [
     category: "Full Stack",
     year: "2024",
     color: "#22c55e",
+    github: "https://github.com/PrajwalpGM256/JudgementDay",
     featured: true,
   },
   {
@@ -50,17 +51,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "maine-legislation",
-    title: "Maine Legislation Analysis",
-    description: "Web scraping & data exploration project for Sierra Club Maine — built database from scraped legislative data",
-    highlights: ["Web scraping", "Database design", "Data exploration"],
-    tech: ["Python", "Web Scraping", "SQL", "Data Analysis"],
-    category: "Data Science",
-    year: "2024",
-    color: "#f97316",
-    featured: true,
-  },
-  {
     id: "portfolio",
     title: "Portfolio Website",
     description: "This site — built with React, Framer Motion, Lenis smooth scroll, and attention to detail",
@@ -70,6 +60,17 @@ export const projects: Project[] = [
     year: "2025",
     color: "#06b6d4",
     github: "https://github.com/PrajwalpGM256/portLN",
+    featured: true,
+  },
+  {
+    id: "maine-legislation",
+    title: "Maine Legislation Analysis",
+    description: "Web scraping & data exploration project for Sierra Club Maine — built database from scraped legislative data",
+    highlights: ["Web scraping", "Database design", "Data exploration"],
+    tech: ["Python", "Web Scraping", "SQL", "Data Analysis"],
+    category: "Data Science",
+    year: "2024",
+    color: "#f97316",
     featured: true,
   },
   {
@@ -92,7 +93,7 @@ export const projects: Project[] = [
     category: "Backend",
     year: "2024",
     color: "#eab308",
-    featured: false,
+    featured: true,
   },
   {
     id: "react-components",
@@ -122,9 +123,9 @@ export const projects: Project[] = [
 
 export const projectsSection = {
   label: "Featured Work",
-  title: "PROJECTS",
+  title: "FEATURED PROJECTS",
   viewAllText: "View All Projects",
-  
+
   timing: {
     headerDelay: 0.2,
     cardsStagger: 0.1,
