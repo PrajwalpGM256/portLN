@@ -14,7 +14,7 @@ export function Quote() {
       <QuoteText />
 
       {/* Spacer */}
-      <div className="h-20 md:h-28 lg:h-32" />
+      <div className="h-12 md:h-28 lg:h-32" />
 
       {/* Marquee Banner */}
       <motion.div
