@@ -41,9 +41,9 @@ export function QuoteText() {
 
   return (
     <div ref={ref} className="relative site-container">
-      {/* Large quote mark */}
+      {/* Large quote mark - smaller on mobile */}
       <motion.div
-        className="absolute -top-8 md:-top-12 left-0 text-[160px] md:text-[220px] font-serif leading-none pointer-events-none select-none"
+        className="absolute -top-4 md:-top-12 left-0 md:left-0 text-[80px] md:text-[160px] lg:text-[220px] font-serif leading-none pointer-events-none select-none"
         style={{ color: "rgba(34, 197, 94, 0.08)" }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -53,17 +53,17 @@ export function QuoteText() {
       </motion.div>
 
       {/* Both Quotes */}
-      <div className="space-y-10 md:space-y-14">
+      <div className="space-y-8 md:space-y-14 pt-8 md:pt-0">
         {quoteData.quotes.map((quote, idx) => (
           <div key={idx} className="relative z-10">
             {/* Quote text */}
-            <blockquote className="max-w-5xl text-xl md:text-3xl lg:text-4xl leading-snug md:leading-snug lg:leading-snug">
+            <blockquote className="max-w-5xl text-lg md:text-3xl lg:text-4xl leading-relaxed md:leading-snug lg:leading-snug">
               {renderQuoteText(quote.text, quote.highlights, quoteData.timing.quoteDelay + idx * 0.8)}
             </blockquote>
 
             {/* Author */}
             <motion.p
-              className="mt-4 text-base md:text-lg font-medium"
+              className="mt-3 md:mt-4 text-sm md:text-lg font-medium"
               style={{ color: "var(--color-dark-400)" }}
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -72,9 +72,9 @@ export function QuoteText() {
               — {quote.author}
             </motion.p>
 
-            {/* Accent line after each quote */}
+            {/* Accent line after each quote - shorter on mobile */}
             <motion.div
-              className="mt-6 flex items-center"
+              className="mt-4 md:mt-6 flex items-center"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1 + idx * 0.8, duration: 0.8 }}
@@ -83,7 +83,7 @@ export function QuoteText() {
                 className="h-px"
                 style={{ background: "var(--color-primary)" }}
                 initial={{ width: 0 }}
-                animate={isInView ? { width: 60 } : {}}
+                animate={isInView ? { width: 40 } : {}}
                 transition={{ delay: 1.2 + idx * 0.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               />
             </motion.div>

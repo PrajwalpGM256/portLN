@@ -31,7 +31,7 @@ export function ContactStatement() {
       </motion.svg>
 
       {/* Main statement - dark text */}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tight">
+      <h2 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight">
         {lines.map((line, i) => (
           <motion.span
             key={line}
@@ -61,7 +61,7 @@ export function ContactStatement() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: timing.statementDelay + 0.3 }}
         >
-          
+
         </motion.span>
       </h2>
     </div>

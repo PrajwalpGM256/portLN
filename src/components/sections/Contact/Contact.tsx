@@ -31,12 +31,30 @@ export function Contact() {
       </div>
 
       {/* Main Content */}
-      <div className="site-container flex-1 flex flex-col justify-center py-16 pt-32">
+      <div className="site-container flex-1 flex flex-col justify-center py-12 md:py-16 pt-28 md:pt-32">
         {/* Statement centered */}
         <ContactStatement />
 
-        {/* Three column layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mt-8">
+        {/* Mobile: Stacked layout */}
+        <div className="md:hidden flex flex-col gap-8 mt-8">
+          {/* Nav Links */}
+          <div className="text-center">
+            <ContactNav />
+          </div>
+
+          {/* CTA Button */}
+          <div className="flex justify-center">
+            <ContactCTA />
+          </div>
+
+          {/* Social Links */}
+          <div className="flex justify-center">
+            <ContactSocials />
+          </div>
+        </div>
+
+        {/* Desktop: Three column layout */}
+        <div className="hidden md:grid grid-cols-3 gap-8 items-start mt-8">
           <ContactNav />
           <div className="flex flex-col items-center justify-center">
             <ContactCTA />
@@ -51,8 +69,8 @@ export function Contact() {
       </div>
 
       {/* Footer */}
-      <div className="site-container pb-8">
-        <div className="mt-6 flex justify-center items-center text-[11px]" style={{ color: theme.accent }}>
+      <div className="site-container pb-6 md:pb-8">
+        <div className="mt-4 md:mt-6 flex justify-center items-center text-xs md:text-[11px]" style={{ color: theme.accent }}>
           <p>© {new Date().getFullYear()} Prajwal. All rights reserved</p>
         </div>
       </div>

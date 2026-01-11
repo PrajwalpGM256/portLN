@@ -65,7 +65,7 @@ export function Journey() {
   return (
     <section
       id="journey"
-      className="relative h-screen overflow-hidden z-20 flex flex-col"
+      className="relative min-h-screen md:h-screen overflow-hidden z-20 flex flex-col"
       style={{
         backgroundColor: theme.black,
         marginTop: "-100px",
@@ -86,7 +86,7 @@ export function Journey() {
 
       {/* Content Container - fills viewport */}
       <div className="relative z-10 flex flex-col flex-1 site-container py-6 md:py-8">
-        {/* Header Row - Title on left, Nav on right */}
+        {/* Header Row - Title on left, Nav on right (Desktop only) */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 pb-4 md:pb-6">
           {/* Title - Single Line */}
           <div className="flex-shrink-0">
@@ -112,8 +112,8 @@ export function Journey() {
             </motion.h2>
           </div>
 
-          {/* Loaders + Nav */}
-          <div className="flex items-center gap-3 md:gap-4">
+          {/* Desktop: Loaders + Nav */}
+          <div className="hidden md:flex items-center gap-3 md:gap-4">
             {/* Prev Button */}
             <button
               onClick={goToPrev}
@@ -163,10 +163,59 @@ export function Journey() {
         </div>
 
         {/* Story Cards - Fills remaining height */}
-        <div className="relative flex-1 min-h-0">
+        <div className="relative flex-1 min-h-[400px] md:min-h-0">
           <AnimatePresence mode="wait">
             <StoryCard key={activeExperience.id} experience={activeExperience} />
           </AnimatePresence>
+        </div>
+
+        {/* Mobile: Loaders + Nav (After Cards) */}
+        <div className="flex md:hidden items-center justify-center gap-3 pt-6 pb-2">
+          {/* Prev Button */}
+          <button
+            onClick={goToPrev}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-white/5 shrink-0"
+            style={{ border: "1px solid var(--color-dark-700)" }}
+            aria-label="Previous"
+          >
+            <ChevronLeft size={18} style={{ color: "var(--color-dark-400)" }} />
+          </button>
+
+          {/* Progress Bars */}
+          <div className="flex items-center gap-2">
+            {experience.map((exp, index) => (
+              <button
+                key={exp.id}
+                onClick={() => goToSlide(index)}
+                className="w-12"
+                aria-label={`Go to ${exp.company}`}
+              >
+                <div
+                  className="h-1.5 rounded-full overflow-hidden"
+                  style={{ backgroundColor: "var(--color-dark-800)" }}
+                >
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{
+                      backgroundColor: index === activeIndex ? exp.color : "var(--color-dark-600)",
+                      width: index === activeIndex ? `${progress}%` : index < activeIndex ? "100%" : "0%",
+                    }}
+                    transition={{ duration: 0.1 }}
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={goToNext}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-white/5 shrink-0"
+            style={{ border: "1px solid var(--color-dark-700)" }}
+            aria-label="Next"
+          >
+            <ChevronRight size={18} style={{ color: "var(--color-dark-400)" }} />
+          </button>
         </div>
       </div>
     </section>
@@ -180,18 +229,19 @@ interface StoryCardProps {
 
 function StoryCard({ experience: exp }: StoryCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const expIndex = experience.findIndex((e) => e.id === exp.id) + 1;
 
   return (
     <motion.div
-      className="absolute inset-0 flex items-center"
+      className="absolute inset-0 flex items-start md:items-center overflow-y-auto md:overflow-visible hide-scrollbar"
       initial={{ opacity: 0, x: 80 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -80 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="w-full h-full">
+      <div className="w-full md:h-full">
         <motion.div
-          className="relative rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 h-full flex flex-col cursor-pointer"
+          className="relative rounded-2xl overflow-hidden p-6 md:p-10 lg:p-12 md:h-full flex flex-col cursor-pointer"
           style={{
             background: `linear-gradient(135deg, ${exp.color}08 0%, transparent 40%, ${exp.color}05 100%)`,
           }}
@@ -373,40 +423,50 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
+                className="relative"
               >
+                {/* Mobile: Index number on top right */}
+                <div className="md:hidden absolute -top-2 right-0">
+                  <span
+                    className="text-4xl font-black"
+                    style={{ color: exp.color, opacity: 0.6 }}
+                  >
+                    {String(expIndex).padStart(2, '0')}
+                  </span>
+                </div>
                 <span
-                  className="text-lg md:text-xl font-semibold tracking-wide pb-1"
+                  className="text-2xl md:text-xl font-semibold tracking-wide pb-1"
                   style={{ color: exp.color }}
                 >
                   {exp.role}
                 </span>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-2 pb-2">
+                <h3 className="text-[2.5rem] md:text-5xl lg:text-6xl font-black tracking-tight mt-2 pb-2 leading-tight">
                   {exp.company}
                 </h3>
               </motion.div>
 
               {/* Location & Period */}
               <motion.div
-                className="flex flex-wrap items-center gap-4 md:gap-5 mt-8"
+                className="flex flex-wrap items-center gap-4 md:gap-5 mt-6 md:mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
                 <div className="flex items-center gap-2">
-                  <MapPin size={14} style={{ color: "var(--color-dark-500)" }} />
-                  <span className="text-sm" style={{ color: "var(--color-dark-400)" }}>
+                  <MapPin size={18} style={{ color: "var(--color-dark-500)" }} />
+                  <span className="text-lg md:text-sm" style={{ color: "var(--color-dark-400)" }}>
                     {exp.location}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar size={14} style={{ color: "var(--color-dark-500)" }} />
-                  <span className="text-sm" style={{ color: "var(--color-dark-400)" }}>
+                  <Calendar size={18} style={{ color: "var(--color-dark-500)" }} />
+                  <span className="text-lg md:text-sm" style={{ color: "var(--color-dark-400)" }}>
                     {exp.period}
                   </span>
                 </div>
                 {exp.current && (
                   <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full"
+                    className="text-sm md:text-xs font-semibold px-3 py-1 rounded-full"
                     style={{ backgroundColor: `${exp.color}20`, color: exp.color }}
                   >
                     CURRENT
@@ -416,7 +476,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
 
               {/* Story */}
               <motion.p
-                className="text-sm md:text-base lg:text-lg leading-relaxed mt-6 pt-4 pb-2 max-w-lg"
+                className="text-lg md:text-base lg:text-lg leading-relaxed mt-5 md:mt-6 pt-2 md:pt-4 pb-2 max-w-lg"
                 style={{ color: "var(--color-dark-300)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -435,7 +495,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                 transition={{ delay: 0.3 }}
               >
                 <span
-                  className="text-sm tracking-widest uppercase font-bold block mb-5 pb-2"
+                  className="text-base md:text-sm tracking-widest uppercase font-bold block mb-5 pb-2"
                   style={{ color: "var(--color-dark-400)" }}
                 >
                   Key Highlights
@@ -457,7 +517,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                         }}
                       />
                       <span
-                        className="text-sm md:text-base leading-relaxed"
+                        className="text-lg md:text-base leading-relaxed"
                         style={{ color: "var(--color-dark-300)" }}
                       >
                         {highlight}
@@ -474,7 +534,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                 transition={{ delay: 0.55 }}
               >
                 <span
-                  className="text-sm tracking-widest uppercase font-bold block mb-5 pb-2"
+                  className="text-base md:text-sm tracking-widest uppercase font-bold block mb-5 pb-2"
                   style={{ color: "var(--color-dark-400)" }}
                 >
                   Technologies
@@ -483,7 +543,7 @@ function StoryCard({ experience: exp }: StoryCardProps) {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs md:text-sm px-3 py-1.5 rounded-full"
+                      className="text-base md:text-sm px-4 py-2 md:px-3 md:py-1.5 rounded-full"
                       style={{
                         backgroundColor: "var(--color-dark-900)",
                         border: "1px solid var(--color-dark-700)",
@@ -498,15 +558,15 @@ function StoryCard({ experience: exp }: StoryCardProps) {
             </div>
           </div>
 
-          {/* Large Index Number */}
+          {/* Desktop: Large Index Number */}
           <motion.div
-            className="absolute bottom-4 right-6 md:bottom-8 md:right-12 text-[80px] md:text-[140px] font-black leading-none select-none pointer-events-none"
+            className="hidden md:block absolute bottom-8 right-12 text-[140px] font-black leading-none select-none pointer-events-none"
             style={{ color: exp.color, opacity: 0.15 }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            {String(experience.findIndex((e) => e.id === exp.id) + 1).padStart(2, "0")}
+            {String(expIndex).padStart(2, "0")}
           </motion.div>
         </motion.div>
       </div>
