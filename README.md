@@ -36,3 +36,4 @@ Everything's in `src/data/` — just edit those files to make it yours:
 - `projects.ts` — portfolio items
 - `techStack.ts` — skills grid
 
+## LICENSE - MIT
