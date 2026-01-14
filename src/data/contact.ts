@@ -26,10 +26,10 @@ export interface FooterLink {
 export const contactData = {
   // Main statement
   statement: {
-    line1: "LET'S BUILD",
-    line2: "SOMETHING",
-    line3: "GREAT",
-    accent: "GREAT", // which word gets the accent color
+    line1: "READY TO COLLABORATE?",
+    line2: "LET'S",
+    line3: "CONNECT",
+    accent: "CONNECT", // which word gets the accent color
   },
 
   // Section labels
