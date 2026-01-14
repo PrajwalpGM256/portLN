@@ -17,7 +17,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "languages",
     title: "Programming Languages",
-    description: "Core languages I use to build software solutions",
+    description: "Languages I use most often for building projects and solving problems.",
     icon: "languages",
     color: "#f59e0b",
     skills: [
@@ -31,7 +31,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "fullstack",
     title: "Full Stack",
-    description: "End-to-end application development with modern frameworks",
+    description: "I like working on both the frontend and backend, using modern frameworks to build complete apps.",
     icon: "code",
     color: theme.navbarBg,
     skills: [
@@ -50,7 +50,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "ml",
     title: "Machine Learning",
-    description: "Building intelligent systems that learn and adapt",
+    description: "I use ML tools and libraries to work on projects that involve data and predictions.",
     icon: "brain",
     color: "var(--color-purple)",
     skills: [
@@ -62,7 +62,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "data",
     title: "Data Engineering",
-    description: "Designing scalable data pipelines and analytics",
+    description: "I enjoy working with data, from building pipelines to analyzing results.",
     icon: "database",
     color: "var(--color-cyan)",
     skills: [
@@ -78,7 +78,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "cloud",
     title: "Cloud & DevOps",
-    description: "Deploying and scaling applications in the cloud",
+    description: "I deploy and manage apps in the cloud, and use tools like Docker and GitHub Actions for automation.",
     icon: "cloud",
     color: "var(--color-orange)",
     skills: [

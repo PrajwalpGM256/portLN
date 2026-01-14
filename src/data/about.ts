@@ -54,20 +54,18 @@ export const stats: Stat[] = [
 export const aboutSection = {
   titleLine1: "Experience",
   titleLine2: "&Journey",
-  description: "From Electronics & Communication engineering to mastering full-stack development and machine learning. A relentless pursuit of building systems that matter.",
+  description: "I studied Electronics & Communication engineering before moving into software. Along the way, I picked up full-stack development and machine learning by working on real projects and learning from others.",
   storyTitle: "The Path",
   storyParagraphs: [
-    "Started coding in 2019, fell in love with the craft. What began as curiosity became obsession — understanding systems, optimizing performance, creating experiences.",
-    "Now pursuing MS in Computer Science at Northeastern while building production systems at Northcross Group. Every line of code is intentional.",
+    "I started coding in 2019, mostly out of curiosity. Over time, I found myself enjoying the process of solving problems and building things that people use.",
+    "I'm currently pursuing my MS in Computer Science at Northeastern and working at Northcross Group. I like working on practical projects and learning from my teammates.",
   ],
-
   currentFocus: [
     "Machine Learning & AI",
     "Full Stack Development", 
     "Data Engineering",
     "System Design",
   ],
-
   ctaText: "Let's Connect",
   ctaLink: "#contact",
   timing: {
