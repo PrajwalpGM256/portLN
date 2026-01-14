@@ -22,7 +22,7 @@ export const experience: Experience[] = [
     duration: "3 years",
     current: false,
     color: "#0066CC",
-    story: "My journey began at Infosys, where I grew from a fresh engineer into a confident developer. I built full-stack applications with Spring Boot and React, architected microservices that improved scalability, and established CI/CD pipelines. This was where I fell in love with building software that impacts millions.",
+    story: "At Infosys, I started my career as a software developer. I worked on full-stack projects using Spring Boot and React, learned about microservices, and set up CI/CD pipelines. This role gave me hands-on experience building software for real users and collaborating with talented teams.",
     highlights: [
       "Developed full-stack apps with Spring Boot & React, improving performance by 15%",
       "Refactored monolithic apps to microservices, improving scalability by 10%",
@@ -41,7 +41,7 @@ export const experience: Experience[] = [
     duration: "2 years",
     current: true,
     color: "#CC0000",
-    story: "Northeastern became my launchpad to the next level. Diving deep into Machine Learning, Algorithms, AI, and Web Development at Khoury College expanded my horizons beyond traditional software engineering. Maintaining a 3.85 GPA while building real-world projects has shaped me into a well-rounded technologist.",
+    story: "At Northeastern, I focused on machine learning, algorithms, and web development at Khoury College. Balancing coursework and projects, I maintained a strong GPA and enjoyed working on practical problems with classmates from around the world.",
     highlights: [
       "Pursuing MS in Computer Science at Khoury College with 3.85 GPA",
       "Coursework in Programming Design Paradigm, Algorithms, AI, ML",
@@ -60,7 +60,7 @@ export const experience: Experience[] = [
     duration: "7 months",
     current: false,
     color: "#22c55e",
-    story: "At Northcross Group, I pushed the boundaries of full-stack development. Building scalable RESTful APIs and intuitive frontend applications sharpened my skills in both backend robustness and frontend finesse. Every feature I shipped improved system efficiency and user experience.",
+    story: "At Northcross Group, I worked on both backend APIs and frontend applications. I enjoyed building features that made our systems faster and easier to use, and learned a lot about testing and deployment in a real business environment.",
     highlights: [
       "Engineered scalable RESTful APIs with Node.js & Express, improving throughput by 35%",
       "Built intuitive frontend pages and applications for enhanced UX",
@@ -76,6 +76,6 @@ export const journeySection = {
   label: "My Journey",
   title: "THE STORY",
   subtitle: "SO FAR",
-  description: "From writing my first lines of code to building intelligent systems — every experience has shaped who I am today.",
+  description: "I started programming in college and have enjoyed learning new technologies ever since. Each job and project has taught me something new about building software and working with others.",
   autoPlayInterval: 8000, // 8 seconds per card
 } as const;
