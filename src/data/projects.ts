@@ -84,6 +84,60 @@ export const projects: Project[] = [
     color: "#ec4899",
     featured: false,
   },
+ {
+    id: "ghosthunter",
+    title: "GhostHunter",
+    description: "Automated job posting alert system that monitors job boards using CSS selectors and notifies users when relevant positions matching their criteria become available",
+    highlights: [
+      "Custom CSS Selector Monitoring",
+      "Keyword-based Job Filtering",
+      "Automated Background Scanning",
+      "Configurable Alert System"
+    ],
+    tech: [
+      "C#",
+      ".NET 8",
+      "PostgreSQL",
+      "Entity Framework Core",
+      "Docker",
+      "Swagger",
+      "Hangfire",
+      "Clean Architecture"
+    ],
+    category: "Full Stack",
+    year: "2025",
+    color: "#6366f1",
+    github: "",
+    featured: true
+  },
+  {
+    id: "medible",
+    title: "Medible",
+    description: "Comprehensive food-drug interaction checker helping users identify dangerous interactions between medications and foods",
+    highlights: [
+      "FDA & USDA API Integration",
+      "JWT Authentication",
+      "Real-time Interaction Checking",
+      "Multi-theme Support"
+    ],
+    tech: [
+      "Vue.js",
+      "TypeScript",
+      "Python",
+      "Flask",
+      "PostgreSQL",
+      "Pinia",
+      "shadcn-vue",
+      "Tailwind CSS",
+      "OpenFDA API",
+      "USDA API"
+    ],
+    category: "Full Stack",
+    year: "2025",
+    color: "#10b981",
+    github: "https://github.com/PrajwalpGM256/Medible",
+    featured: true
+  },
   {
     id: "ride-sharing",
     title: "Ride Sharing Optimization",
