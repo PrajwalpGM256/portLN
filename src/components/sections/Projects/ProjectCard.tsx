@@ -40,7 +40,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="relative flex-shrink-0 cursor-pointer group"
       style={{
         width: "440px",
-        height: "340px",
+        height: "400px",
         perspective: "1200px",
         paddingLeft: "8px",
         paddingBottom: "8px",
