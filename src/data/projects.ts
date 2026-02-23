@@ -23,8 +23,37 @@ export const projects: Project[] = [
     year: "2025",
     color: "#8b5cf6",
     github: "https://github.com/PrajwalpGM256/brocode",
-    live: "https://brocode-six.vercel.app/",
+    live: "https://brocode.prajwalgm.tech/",
     featured: true,
+  },
+    {
+    id: "medible",
+    title: "Medible",
+    description: "Comprehensive food-drug interaction checker helping users identify dangerous interactions between medications and foods",
+    highlights: [
+      "FDA & USDA API Integration",
+      "JWT Authentication",
+      "Real-time Interaction Checking",
+      "Multi-theme Support"
+    ],
+    tech: [
+      "Vue.js",
+      "TypeScript",
+      "Python",
+      "Flask",
+      "PostgreSQL",
+      "Pinia",
+      "shadcn-vue",
+      "Tailwind CSS",
+      "OpenFDA API",
+      "USDA API"
+    ],
+    category: "Full Stack",
+    year: "2025",
+    color: "#10b981",
+    github: "https://github.com/PrajwalpGM256/Medible",
+    live: "https://medible.prajwalgm.tech",
+    featured: true
   },
   {
     id: "judgment-day",
@@ -108,34 +137,6 @@ export const projects: Project[] = [
     year: "2025",
     color: "#6366f1",
     github: "",
-    featured: true
-  },
-  {
-    id: "medible",
-    title: "Medible",
-    description: "Comprehensive food-drug interaction checker helping users identify dangerous interactions between medications and foods",
-    highlights: [
-      "FDA & USDA API Integration",
-      "JWT Authentication",
-      "Real-time Interaction Checking",
-      "Multi-theme Support"
-    ],
-    tech: [
-      "Vue.js",
-      "TypeScript",
-      "Python",
-      "Flask",
-      "PostgreSQL",
-      "Pinia",
-      "shadcn-vue",
-      "Tailwind CSS",
-      "OpenFDA API",
-      "USDA API"
-    ],
-    category: "Full Stack",
-    year: "2025",
-    color: "#10b981",
-    github: "https://github.com/PrajwalpGM256/Medible",
     featured: true
   },
   {
