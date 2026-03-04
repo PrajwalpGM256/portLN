@@ -104,7 +104,7 @@ export const experience: Experience[] = [
       "Using Python and SQL for data-driven decision making",
       "Applying prompt engineering and troubleshooting skills to foster learning",
     ],
-    skills: ["Python", "SQL", "Machine Learning", "Data Analytics", "Prompt Engineering"],
+    skills: ["Python", "SQL", "Data Analytics", "Prompt Engineering"],
   },
 ];
 
