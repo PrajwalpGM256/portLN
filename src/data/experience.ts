@@ -14,6 +14,23 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    id: "cradiant",
+    role: "Software Developer",
+    company: "Cradiant IT Services Pvt Ltd",
+    location: "Pune, India",
+    period: "Nov 2019 - Dec 2020",
+    duration: "1 yr 2 mos",
+    current: false,
+    color: "#8B5CF6",
+    story: "At Cradiant, I built responsive web applications with Angular and TypeScript, translating UI/UX designs into reusable components. I worked closely with backend teams using Java/Spring and Oracle DB, gaining experience in full-stack development and testing practices.",
+    highlights: [
+      "Built responsive web applications with Angular and TypeScript, translating UI/UX designs into reusable web components that reduced development time for future features",
+      "Integrated frontend interfaces with Java/Spring backend services, consuming RESTful APIs with Oracle DB to process and sualize data, improving end user decision-making",
+      "Wrote and maintained unit tests using Jasmine/Karma for Angular and JUnit/Mockito for backend services, reducing regression bugs and increasing release confidence",
+    ],
+    skills: ["Angular", "TypeScript", "Java", "Spring", "SQL", "MEAN Stack"],
+  },
+  {
     id: "infosys",
     role: "Software Developer",
     company: "Infosys",
@@ -69,6 +86,25 @@ export const experience: Experience[] = [
       "Conducted comprehensive testing using Cypress and Artillery",
     ],
     skills: ["Node.js", "Express.js", "React", "Docker", "OAuth2/JWT", "Cypress"],
+  },
+    {
+    id: "roux-institute",
+    role: "Proctor / Multimedia Support Technician",
+    company: "Northeastern University",
+    location: "Portland, ME",
+    period: "Oct 2024 - Present",
+    duration: "1 yr 6 mos",
+    current: true,
+    color: "#F59E0B",
+    story: "At The Roux Institute, I support classroom technology and help faculty focus on teaching. I leverage data analytics and AI/ML to enhance educational outcomes, while providing coding support to learners both in and outside the classroom.",
+    highlights: [
+      "Streamlining classroom technology for faculty to deliver content effectively",
+      "Leveraging data analytics and AI/ML to enhance educational outcomes",
+      "Providing comprehensive coding support to learners inside and outside classroom",
+      "Using Python and SQL for data-driven decision making",
+      "Applying prompt engineering and troubleshooting skills to foster learning",
+    ],
+    skills: ["Python", "SQL", "Machine Learning", "Data Analytics", "Prompt Engineering"],
   },
 ];
 
